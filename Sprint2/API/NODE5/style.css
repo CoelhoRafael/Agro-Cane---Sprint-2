@@ -65,9 +65,9 @@ body .header .navbar li {
 
 .container .box {
     margin-top: 50px;
-    background-color: #eeebb8be;
+    background-color: #ede9a265;
     padding-top: 30px;
-    padding-bottom: 450px;
+    padding-bottom: 520px;
     text-align: center;
     border-radius: 30px;
 }
@@ -84,5 +84,10 @@ body .header .navbar li {
 .graphic_box img {
     padding-top: 20px;
     width: 90%;
+}
+
+.status {
+    text-transform: uppercase;
+    font-weight: 900;
 }
 
