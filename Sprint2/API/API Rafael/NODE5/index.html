@@ -48,21 +48,23 @@
                 </div>
 -->
 
-				<a href="index.html"> <button class="destaque">Home</button></a>
+				<a href="index.html"> <button>Home</button></a>
 				<a href="quemsomos.html"> <button>Quem somos</button></a>
 				<a href="serviços.html"> <button>Serviços</button></a>
 				<a href="simulador.html"> <button>Simulador</button></a>
 				<a href="cadastro.html"> <button>Cadastrar</button></a>
+				<a href="cadastro.html"> <button class="destaque">API</button></a>
+
 			</ul>
 
 		</div>
 	</div>
 	<div class="bannerhome">
-        <div class="container">
-            <h1 class="destaque">Informações para você -
-                Vantagens para sua lavoura</h1>
-        </div>
-    </div>
+		<div class="container">
+			<h1 class="destaque">Informações para você -
+				Vantagens para sua lavoura</h1>
+		</div>
+	</div>
 
 	<div class="containersensors">
 		<div class="tempumid">
@@ -71,22 +73,29 @@
 				<h1>Sensor DHT11 - Temperatura</h1>
 				<h2>Média: <label id='average'>0.00</label></h2>
 				<h2>Média Hora: <label id='averageHour'>0.00</label></h2>
+				<h2>Situação:<div id="result_temp"></div>
+				</h2>
+
+
 			</section>
 			<section style="width:50%" class="sensor">
 				<canvas id="chart"></canvas>
 				<section>
+					<img src="imgs/graf_temp.png" alt="">
 		</div>
 		<div class="tempumid">
 			<section>
 				<h1>Sensor DHT11 - Umidade</h1>
 				<h2>Média: <label id='averageHumidity'>0.00</label></h2>
 				<h2>Média Hora: <label id='averageHourHumidity'>0.00</label></h2>
-				Situação:<div id="result">ok</o:div>
+				<h2>Situação:<div id="result_umid"></div>
+				</h2>
 			</section>
 			<section style="width:50%" class="sensor">
 				<canvas id="chart-humidity"></canvas>
 				<section>
 		</div>
+		<img src="imgs/graf_umid.png" alt="">
 	</div>
 	<div style="display: none;">
 		<section>
@@ -114,7 +123,7 @@
 		</div>
 	</div>
 	<script>
-	
+
 
 		var context = document.getElementById("chart").getContext("2d");
 		context.canvas.width = 1000;
@@ -213,10 +222,34 @@
 			http.send(null);
 			console.log(http.responseText)
 			var obj = JSON.parse(http.responseText);
+
+			
+			
+			if ((obj.data[obj.total - 1] > 19) && (obj.data[obj.total - 1] < 22) || ((obj.data[obj.total - 1] >= 32) && (obj.data[obj.total - 1] < 34)))
+			 { result_temp.innerHTML = `<span style="color:orange">Emergência ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+
+
+
+
+			else if ((obj.data[obj.total - 1] >= 22) && (obj.data[obj.total - 1] < 25) || (obj.data[obj.total - 1] > 27) && (obj.data[obj.total - 1] < 32))
+			 { result_temp.innerHTML = `<span style="color:yellow;background-color:black">Alerta ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+
+			else if ((obj.data[obj.total - 1] >= 25) && (obj.data[obj.total - 1] <= 27))
+			 { result_temp.innerHTML = `<span style="color:green">Ideal ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+			else
+			 { result_temp.innerHTML = `<span style="color:red">Crítico ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+
+
 			if (obj.data.length == 0) {
 				return;
 			}
-            
+
+
+		
 
 			var _lastIndexTemp = this.lastIndexTemp;
 			this.lastIndexTemp = obj.data.length;
@@ -296,13 +329,32 @@
 			http.send(null);
 
 			var obj = JSON.parse(http.responseText);
+
+
+			var obj = JSON.parse(http.responseText);
+
 			if (obj.data.length == 0) {
 				return;
-			} else {
-				if((obj.data[obj.total - 1] <=5)||(obj.data[obj.total - 1]> 80)){
-					result.innerHTML = `Critico`
-				}
+			}  else {
+				if ((obj.data[obj.total - 1] > 19) && (obj.data[obj.total - 1] < 48) || ((obj.data[obj.total - 1] >= 56) && (obj.data[obj.total - 1] < 73)))
+			 { result_umid.innerHTML = `<span style="color:orange">Emergência ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+
+
+
+
+			else if ((obj.data[obj.total - 1] >= 48) && (obj.data[obj.total - 1] < 50) || (obj.data[obj.total - 1] > 52) && (obj.data[obj.total - 1] <= 56))
+			 { result_umid.innerHTML = `<span style="color:yellow;background-color:black">Alerta ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+
+			else if ((obj.data[obj.total - 1] >= 50) && (obj.data[obj.total - 1] <= 52))
+			 { result_umid.innerHTML = `<span style="color:green">Ideal ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
+			else
+			 { result_umid.innerHTML = `<span style="color:red">Crítico ${(obj.data[obj.total - 1]).toFixed(2)}</span>` }
+
 			}
+
 
 			console.log(obj)
 			var _lastIndexTemp = this.lastIndexTempHumidity;
@@ -492,11 +544,11 @@
 		// }
 
 		// get_lumi();
-	
+
 		setInterval(() => {
 			get_temperature()
-            get_dataHumidity()
-		}, 1000);
+			get_dataHumidity()
+		}, 3000);
 
 	</script>
 
@@ -504,5 +556,3 @@
 </body>
 
 </html>
-
-

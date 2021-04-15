@@ -18,7 +18,7 @@ class NewArduinoTemperature {
     
     SetConnection(){
         setInterval(() => {
-            let data_float = sensors.dht11({minTemp:20, maxTemp:32});
+            let data_float = sensors.dht11({minTemp:17, maxTemp:37});
 
             if (this.__listDataTemp.length === 59) {
                 let sum = this.__listDataTemp.reduce((a, b) =>  a + b, 0);

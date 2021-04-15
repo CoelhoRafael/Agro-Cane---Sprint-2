@@ -2,6 +2,7 @@
 
 body{
     font-family: 'Amaranth', sans-serif;
+    margin: 0;
 }
 .header button{
     font-family: 'Amaranth', sans-serif;
@@ -194,6 +195,7 @@ text-align: center;
 .containersensors{
     width: 100%;
     float: left;
+    border: 5px solid #ede9a3;
 }
 .containersensors .tempumid{
     width: 50%;

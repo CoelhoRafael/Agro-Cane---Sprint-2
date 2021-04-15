@@ -22,7 +22,7 @@ function trc5000() {
 
 function ldr(){
     min = 0;
-    max = 1023
+    max = 1023;
 
     let random = Math.floor(Math.random()*(max-min+1)+min);
 
@@ -37,11 +37,11 @@ function dht11(options){
     minTemperature = options.minTemp;
     maxTemperature = options.maxTemp;
 
-    if (minHumidity < 16 || maxHumidity > 200) {
+    if (minHumidity < 10 || maxHumidity > 80) {
         throw new Error('Os valores minímos e máximos para umidade são 20% e 100% respectivamente.')
     }
 
-    if (minTemperature < 0 || maxTemperature > 200) {
+    if (minTemperature < 10 || maxTemperature > 100) {
         throw new Error('Os valores minímos e máximos para temperatura são 0 e 50 respectivamente.')
     }
 
