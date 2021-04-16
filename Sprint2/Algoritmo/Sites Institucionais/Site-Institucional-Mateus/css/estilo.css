@@ -1,0 +1,334 @@
+@font-face {
+    src: url(../fonts/Raleway-ExtraLight.ttf);
+    font-family: fontebody;
+}
+
+@font-face {
+    src: url(../fonts/YanoneKaffeesatz-ExtraLight.ttf);
+    font-family: fontemenu;
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: fontebody;
+    font-weight: bold;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.porque {
+    text-align: center;
+    margin-top: 0px;
+    height: 250px;
+    background-color: #55A54E;
+    border-bottom: 3px solid #ede9a3;
+}
+
+.porque .container h1 {
+    margin-top: -18px;
+}
+
+.porque .container h1 {
+    color: #232323;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.porque {
+    border-top: 5px solid #ede9a3;
+}
+
+.porque .container .imagem img {
+    float: left;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+.porque .container .imagem img {
+    height: 230px;
+    border: 3px solid #232323;
+    border-radius: 5px;
+}
+
+.porque .container .imagem .analise img {
+    float: right;
+    margin-left: 10px;
+}
+
+.box img {
+    height: 100px;
+}
+
+.box {
+    /* border: 3px solid yellowgreen; */
+    overflow: auto;
+}
+
+.box-item {
+    /* border 1px solid purple; */
+    float: left;
+    text-align: center;
+    width: 27%;
+    padding: 3%;
+}
+
+.home-body {
+    background-color: yellowgreen;
+}
+
+header {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color: yellowgreen;
+}
+
+.home-header {
+    position: fixed;
+    width: 100%;
+}
+
+.menu {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu li {
+    list-style: none;
+}
+
+.menu a {
+    text-decoration: none;
+    color: black;
+    font-family: fontemenu;
+    font-size: 20px;
+}
+
+.menu a:hover,
+.ativo {
+    color: turquoise;
+    border-bottom: 2px solid turquoise;
+    padding-bottom: 5px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1170px;
+    margin: auto;
+}
+
+.banner {
+    background-image: url(../imagens/banner.png);
+    height: 378px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.banner-noticias {
+    background-image: url(../imagens/cabos.png);
+}
+
+.banner-cadastro {
+    background-image: url(../imagens/cadastrar.jpg);
+}
+
+.banner-home {
+    background-image: url(../imagens/fundo.png);
+    background-attachment: fixed;
+    height: 800px;
+}
+
+main {
+    width: 1124px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: auto;
+}
+
+.imagens {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: auto;
+    padding-top: 30px;
+}
+
+.imagens img {
+    padding-bottom: 20px;
+}
+
+h1,
+h2 {
+    color: #007290;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+h2,
+legend {
+    color: yellowgreen;
+}
+
+.texto2 {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+}
+
+.txt {
+    width: 240px;
+}
+
+.noticia1 {
+    display: flex;
+    justify-content: space-between;
+    width: 570px;
+    margin-bottom: 20px;
+}
+
+.noticia1 p {
+    margin-left: 15px;
+}
+
+.noticias {
+    display: flex;
+    justify-content: space-between;
+}
+
+.direita {
+    width: 300px;
+}
+
+.direita img {
+    margin-bottom: 30px;
+}
+
+fieldset {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid yellowgreen;
+}
+
+.entrada,
+.data,
+.numero {
+    margin: 10px;
+    border: 1px solid #007290;
+    border-radius: 4px;
+    padding: 10px;
+    width: 50%;
+}
+
+.numero {
+    width: 15%;
+}
+
+.botao {
+    background-color: yellowgreen;
+    color: white;
+    font-size: 14px;
+    padding: 15px 25px;
+    border-radius: 4px;
+}
+
+.check {
+    margin: 10px;
+}
+
+footer {
+    background-color: black;
+    color: yellowgreen;
+    text-align: center;
+}
+
+.redes-sociais {
+    padding: 20px;
+}
+
+footer p {
+    padding-bottom: 20px;
+}
+
+.botao-menu {
+    display: none;
+}
+
+.botao-menu img {
+    width: 60px;
+}
+
+
+/*medias queries TABLETS*/
+
+@media (max-width: 1169px) {
+    nav {
+        width: 768px;
+    }
+    main {
+        width: 720px;
+    }
+    .texto2 {
+        width: 600px;
+        flex-wrap: wrap;
+    }
+    .noticias {
+        flex-direction: column;
+    }
+    .direita {
+        margin: auto;
+    }
+    .esquerda {
+        margin: auto;
+    }
+}
+
+
+/*medias queries SMART*/
+
+@media (max-width: 767px) {
+    nav {
+        width: 320px;
+        flex-direction: column;
+    }
+    .menu {
+        flex-direction: column;
+        margin: auto;
+        width: 100px;
+        display: none;
+    }
+    .menu li {
+        padding: 5px;
+    }
+    main {
+        width: 320px;
+    }
+    .texto2 {
+        width: 240px;
+        margin: auto;
+        flex-direction: column;
+    }
+    .noticia1 {
+        flex-direction: column;
+        width: 320px;
+    }
+    iframe {
+        width: 320px;
+        height: 180px;
+    }
+    .botao-menu {
+        display: block;
+    }
+}
