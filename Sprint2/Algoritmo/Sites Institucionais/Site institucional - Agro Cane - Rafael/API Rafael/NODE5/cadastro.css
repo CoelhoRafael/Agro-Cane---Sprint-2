@@ -201,8 +201,9 @@ text-align: center;
     background-color: #55A54E;
     width: 300px;
     border: 1px solid #ede9a3;
-
-    ;
+    height: auto;
+    width: auto;
+    
 }
 
 .porque .container input{
