@@ -159,7 +159,11 @@ main {
 .imagens {
     display: flex;
     justify-content: space-between;
+<<<<<<< HEAD
     width: 100%;
+=======
+    width: 1510px;
+>>>>>>> 1e919ed1a79c9efd81c555e9f8fbfbad35677d8b
     flex-wrap: wrap;
     margin: auto;
     padding-top: 30px;

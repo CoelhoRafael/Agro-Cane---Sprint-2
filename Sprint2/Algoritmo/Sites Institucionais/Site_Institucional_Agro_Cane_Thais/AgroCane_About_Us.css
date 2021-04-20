@@ -1,0 +1,159 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.header {
+    background-color: #55A54E;
+    color: #EDE9A2;
+    overflow: auto;
+    border-bottom: 4px solid #EDE9A2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar {
+    float: right;
+    list-style: none;
+}
+
+.main_title {
+    margin: 0;
+    float: left;
+    padding-top: 5px;
+}
+
+body .header .navbar li {
+    float: left;
+    margin-left: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.contrast {
+    color: #006400;
+    text-align: center;
+}
+
+.bt_register {
+    background-color: #EDE9A2;
+    color: #55A54E;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 0;
+    padding: 1px 6px;
+}
+
+.banner {
+    background-image: url(img/Rectangle\ 6-000.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 580px;
+    border-bottom: 5px solid #EDE9A2;
+    margin-bottom: 0;
+}
+
+.about_us {
+    margin: 0;
+    overflow: auto;
+}
+
+.about_us-title {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.about_us-box {
+    background-color: #ede9a2ec;
+    padding: 40px 130px 20px 130px;
+    margin: 95px;
+    text-align: justify;
+    border-bottom: 10px solid #555555;
+    border-left: 10px solid #555555;
+    border-radius: 30px;
+}
+
+.about_us-box .we_are-phrase {
+    text-align: center;
+}
+
+.banner_team_box {
+    background-image: url(img/team.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 4px solid #EDE9A2;
+    padding-bottom: 50px;
+}
+
+.banner_team_box .team {
+    margin: 0;
+    overflow: auto;
+}
+
+.team_box {
+    margin: 95px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.team_box h1 {
+    background-color: rgba(255, 250, 250, 0.637);
+    margin-left: 40%;
+    margin-right: 40%;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.box img {
+    width: 30%;
+    margin: 1%;
+    float: left;
+    margin-top: 30px;
+    border: 4px solid #EDE9A2;
+    border-radius: 15px;
+}
+
+.box {
+    margin: 0%;
+    text-align: center;
+}
+
+.footer {
+    background-color: #55A54E;
+    padding-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    margin: 0;
+    padding-top: 0;
+}
+
+.contrast-footer {
+    color: #006400;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+.cane {
+    color: #EDE9A2;
+}
+
+a {
+    text-decoration: none;
+    color: #EDE9A2;
+}
+
+
+
+
