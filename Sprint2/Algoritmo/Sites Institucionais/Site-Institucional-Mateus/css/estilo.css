@@ -159,7 +159,7 @@ main {
 .imagens {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 1510px;
     flex-wrap: wrap;
     margin: auto;
     padding-top: 30px;
