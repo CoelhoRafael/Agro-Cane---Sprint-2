@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Grafico</title>
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="sortcut icon" href="https://raw.githubusercontent.com/vitoriasilva98/Agro-Cane-BandTec/main/Sprint1/Algoritmo/Simulador/Vitoria-da-Silva/favicon.png" type="image/png" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+
+    <style>
+        .meu-grafico {
+            width: 60%;
+            margin: auto;
+        }
+    </style>
+
+</head>
+
+<body class="home-body">
+    <header class="home-header">
+        <nav>
+            <a href="#"><img src="https://raw.githubusercontent.com/vitoriasilva98/Agro-Cane-BandTec/main/Sprint1/Algoritmo/Simulador/Vitoria-da-Silva/favicon.png">
+            </a>
+            <button class="botao-menu">
+                <img src="imagens/botao.png">
+            </button>
+            <ul class="menu">
+                <li><a href="home.html">Home</a></li>
+                <li><a href="quem-somos.html">Quem Somos</a></li>
+                <li><a href="serviços.html">Serviços</a></li>
+                <li><a href="grafico.html" class="ativo">Grafico</a></li>
+                <li><a href="simulador.html">Simulador</a></li>
+                <li><a href="cadastro.html">Cadrastro</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="meu-grafico">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <footer>
+        <div class="redes-sociais">
+            <a href="#"><img src="imagens/facebook.png"></a>
+            <a href="#"><img src="imagens/instagram.png"></a>
+        </div>
+        <p>2021 by Agro Cane. Todos os direitos reservados</p>
+    </footer>
+
+</body>
+
+</html>
+<script>
+    var ctx = document.getElementById('myChart');
+
+    var meuGrafico = new Chart(ctx, {
+
+        type: 'bar',
+
+        data: {
+
+            labels: ["jan", "fev", "mar", "abr", "mai", "jun"],
+
+            datasets: [
+
+                {
+
+                    label: "Investimentos",
+
+                    data: [6000, 2000, 5000, 4000, 11000, 9000],
+
+                    borderWidth: 12,
+
+                    borderColor: 'rgba(28,28,28, .5)',
+
+                    backgroundColor: 'transparent',
+                },
+
+
+                {
+
+                    type: 'bar',
+                    label: "Investimentos para 2021",
+                    data: [4000, 11000, 6000, 6000, 2000, 7000],
+                    borderWidth: 12,
+                    borderColor: 'rgba(32, 178, 170, .5)',
+                    backgroundColor: 'transparent'
+                }
+            ]
+        },
+
+
+        options: {
+
+            title: {
+
+                display: true,
+
+                fontSize: 22,
+
+                text: "Meus Investimentos",
+
+                position: 'top',
+            },
+            legend: {
+
+                display: true,
+
+                reverse: true,
+
+                position: 'right'
+            },
+            layout: {
+                padding: {
+
+                    left: 50,
+                    top: 50
+                },
+
+            }
+        }
+    })
+
+
+    Chart.defaults.global.defaultFontColor = "#00ff00";
+</script>
