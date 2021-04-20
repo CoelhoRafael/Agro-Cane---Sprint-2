@@ -57,7 +57,7 @@ body .header .navbar li {
     background-image: url(farm.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 700px;
+    height: auto;
     border-bottom: 5px solid #006400;
     background-color: #006400;
     overflow: auto;
@@ -83,11 +83,33 @@ body .header .navbar li {
 
 .graphic_box img {
     padding-top: 20px;
-    width: 90%;
+    width: 200%;
 }
 
 .status {
     text-transform: uppercase;
     font-weight: 900;
+    background-color: rgba(255, 255, 255, 0.918);
+    border-radius: 10px;
 }
 
+.footer {
+    background-color: #55A54E;
+    padding-bottom: 20px;
+}
+
+.contrast-footer {
+    color: #006400;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 20px;
+}
+.cane {
+    color: #EDE9A2;
+}
+
+.copyright {
+    text-align: center;
+    margin: 0;
+    padding-top: 20px;
+}
