@@ -76,7 +76,7 @@ li {
     border-radius: 32px;
     border-bottom: 4px solid #EDE9A2;
     border-left: 4px solid #EDE9A2;
-    padding-bottom: 40px;
+    padding-bottom: 70px;
 }
 
 a {
@@ -91,7 +91,7 @@ a {
 }
 
 .boxes {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .box_information {
@@ -105,7 +105,7 @@ a {
     float: right;
     width: 35%;
     margin-bottom: 0;
-    padding: 80px 100px 0px 70px;
+    padding: 80px 100px 0px 90px;
     text-align: center;
     color: white;
     font-size: x-large;
@@ -122,7 +122,7 @@ a {
     float: left;
     width: 35%;
     margin-bottom: 0;
-    padding: 80px 90px 0px 90px;
+    padding: 80px 90px 0px 70px;
     text-align: center;
     color: white;
     font-size: x-large;
