@@ -19,20 +19,21 @@ select * from Cliente;
 create table Areas (
 idAreas int primary key auto_increment,
 fkCliente int,
+tamanhoArea float,
 foreign key (fkCliente) references Cliente(idCliente)
 ) auto_increment = 1000;
 
 insert into Areas values
-(Null, "1"),
-(Null, "1"),
-(Null, "1"),
-(Null, "2"),
-(Null, "2"),
-(Null, "2");
+(Null, "1", "500"),
+(Null, "1", "500"),
+(Null, "1", "490"),
+(Null, "2", "250"),
+(Null, "2", "250"),
+(Null, "2", "230");
 
 select * from Areas;
 
-create table DHT11 (
+create table Sensor (
 idSensor int primary key auto_increment,
 regiao varchar(20),
 quadrante int,
@@ -42,7 +43,7 @@ statusSensor varchar(20)
 check (statusSensor = "Ideal" or statusSensor = "Alerta" or statusSensor = "Emergência" or statusSensor = "Crítico")
 ) auto_increment = 5000;
 
-insert into DHT11 values
+insert into Sensor values
 (Null, "Norte", 286, "1000", "Ideal"), 
 (Null, "Sul", 286, "1001", "Alerta"), 
 (Null, "Leste", 286, "1002", "Crítico"), 
@@ -50,26 +51,24 @@ insert into DHT11 values
 (Null, "Sudeste", 134, "1004", "Ideal"), 
 (Null, "CentroOeste", 134, "1005", "Emergência"); 
 
-select * from DHT11;
+select * from Sensor;
 
-create table dadoDHT11 (
+create table dadoSensor (
 idDado int primary key auto_increment,
 temperatura float,
 umidade float,
 dataDado datetime,
 fkSensor int,
-foreign key (fkSensor) references DHT11 (idSensor)
+foreign key (fkSensor) references Sensor(idSensor)
 ) auto_increment = 9000;
 
-insert into dadoDHT11 values
+insert into dadoSensor values
 (Null, "25.0", "51", "2021-04-19 12:00", "5000"),
 (Null, "23.3", "48", "2021-04-19 12:00", "5001"),
 (Null, "11.7", "19", "2021-04-19 12:00", "5002"),
 (Null, "27.0", "52", "2021-04-19 12:00", "5003"),
 (Null, "26.6", "50", "2021-04-19 12:00", "5004"),
-(Null, "34.2", "75", "2021-04-19 12:00", "5005");
-
-insert into dadoDHT11 values
+(Null, "34.2", "75", "2021-04-19 12:00", "5005"),
 (Null, "28.0", "57", "2021-04-19 13:00", "5000"),
 (Null, "25.0", "51", "2021-04-19 14:00", "5000"),
 (Null, "23.3", "48", "2021-04-19 13:00", "5001"),
@@ -83,10 +82,12 @@ insert into dadoDHT11 values
 (Null, "34.2", "75", "2021-04-19 13:00", "5005"),
 (Null, "34.2", "75", "2021-04-19 14:00", "5005");
 
-select * from dadoDHT11; 
+select * from dadoSensor; 
 
-select * from DHT11 inner join dadoDHT11 where idSensor = fkSensor;
-select idSensor, regiao, quadrante statusSensor, temperatura, umidade, dataDado from DHT11 inner join dadoDHT11 where idSensor = fkSensor;
+select * from Sensor inner join dadoSensor where idSensor = fkSensor;
+
+select idSensor, regiao, quadrante, statusSensor, temperatura, umidade, dataDado from Sensor inner join dadoSensor where idSensor = fkSensor;
+
 
 create table Usuario (
 idUsuario int primary key auto_increment,
@@ -126,7 +127,7 @@ select * from Acesso;
 
 select * from Cliente join Usuario on idCliente = fkCliente;
 
-select * from Cliente inner join Areas on idCliente = fkCliente inner join DHT11 on idAreas = fkAreas inner join dadoDHT11 on idSensor = fkSensor;
+select * from Cliente inner join Areas on idCliente = fkCliente inner join Sensor on idAreas = fkAreas inner join dadoSensor on idSensor = fkSensor;
 
 
 
