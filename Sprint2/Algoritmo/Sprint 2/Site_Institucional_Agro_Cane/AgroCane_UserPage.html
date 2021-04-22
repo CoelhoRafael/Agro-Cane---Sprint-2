@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal do cliente</title>
+    <link rel="stylesheet" href="AgroCane_UserPage.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    <link rel="sortcut icon"
+        href="https://raw.githubusercontent.com/vitoriasilva98/Agro-Cane-BandTec/main/Sprint1/Algoritmo/Simulador/Vitoria-da-Silva/favicon.png"
+        type="image/png" />
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+
+            <h1 class="main_title">
+                <span class="contrast">Agro</span> Cane
+            </h1>
+
+            <img src="Logo_Folha.PNG" alt="Logo" class="logo">
+
+            <ul class="navbar">
+
+                <li>
+                    <a href="AgroCane_Home_Oficial.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AgroCane_About_Us.html">
+                        Sobre nós
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AgroCane_Services.html">
+                        Serviços
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AgroCane_Simulador_Financeiro.html">
+                        Simulador
+                    </a>
+                </li>
+
+                <li>
+                    <span class="contrast"> Meu portal</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="dashboard">
+        <div class="container">
+            <div class="client_inform">
+                <h3>Olá Usuário!</h3>
+            </div>
+            <div class="company"></div>
+            <form action="">
+                <img src="img/BUNGE.png" alt="">
+            </form>
+            <div class="production">
+                <form action="what">
+                    <h2>Produção de Cana de <br> Açucar
+                    </h2>
+                </form>
+            </div>
+            <div class="hectare">
+                <form action="area">
+                    Hectare
+                    <h1 class="data_number">50.000</h1>
+                </form>
+            </div>
+            <div class="api">
+                <form action="api_control">
+                    Ver em tempo real
+                    <h1 class="api_text">Temperatura e Umidade</h1>
+                </form>
+            </div>
+            <div class="alinhamento">
+            <div class="dashboard_dois">
+                <div class="box-graphic" style="width:50%;">
+                    <div class="graphic" style="width: auto;">
+                      
+                        <form action="save_water">
+                        
+                                <canvas id="myChart"></canvas>
+                                <p class="graphic_resume">Em um ano sua Empresa terá aproximadamente<span
+                                        class="benefit"><br> 20%
+                                        de redução em consumo de água.</span></p>
+
+                           
+
+                        </form>
+                    </div>
+                </div>
+
+                <div class="box-graphic" style="width:30%;">
+                    <div class="meu-grafico2" style="width:150%;">
+                        <canvas class="box-graphic1" id="myChart2" style="padding-bottom: -78px;"></canvas>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <div class="footer">
+        <div class="container">
+            <h2 class="contrast-footer">Agro <span class="cane">Cane</span></h2>
+            <h5 class="copyright">Copyright © 2021 Agro Cane. Todos os direitos reservados.</h5>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    // ctx é o contexto. Onde é para o gráfico ser renderizado? 
+    // Na div myChart! Vamos selecioná-la por getElementById
+    var ctx = document.getElementById('myChart');
+
+    // ao criar um new Chart, colocamos ->
+    // (contexto, { type, data e options} )
+    var meuGrafico = new Chart(ctx, {
+        // TYPE -> qual o tipo do gráfico? será um gráfico de barras? linhas? define aqui
+        type: 'bar',
+
+        // DATA -> os dados renderizados no gráfico:
+        data: {
+            // Informações em Eixo X
+            labels: ["jan", "feb", "mar", "abr", "may", "jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            // Datasets -> grupos de dados!
+            datasets: [
+                // Primeiro dataset    
+                {
+                    // Qual o título deste dataset?
+                    label: "Consumo de 2020",
+                    // Dados? Lembre-se, respectivos a labels.
+                    data: [28000, 18400, 16000, 14400, 12000, 10400, 12000, 9000, 9500, 8800, 8200, 9000],
+                    // expessura da linha
+                    borderWidth: 1,
+                    // cor da linha - em rgba, a é a opacidade.
+                    // 1 = 100% // 0.5 = 50%
+                    borderColor: 'green',
+                    // cor de "fundo" dos dados na tela. transparent = sem cor.
+                    backgroundColor: 'green',
+                },
+
+                // Segundo dataset
+                {
+                    // igual o anterior. Mas, aqui, type line
+                    type: 'bar',
+                    label: "Consumo de 2019",
+                    data: [35000, 23000, 20000, 18000, 15000, 13000, 15000, 12218, 12520, 11632, 10210, 12350],
+                    borderWidth: 1,
+                    borderColor: 'orange',
+                    backgroundColor: 'orange'
+                }
+            ]
+        },
+
+        // OPTIONS -> Opções globais
+        options: {
+
+            title: {
+                // mostrar titulo?
+                display: true,
+                // tamanho do texto
+                fontSize: 25,
+                // texto no titulo
+                text: "Consumo de água",
+                // onde? right? left? top?
+                position: 'top',
+            },
+            legend: {
+                // mostrar legenda?
+                display: true,
+                // ao contrario? (dataset 1 depois de 2)
+                reverse: true,
+                // onde?
+                position: 'bottom'
+            },
+            layout: {
+                padding: {
+                    // padding do grafico, pode add right e bottom também
+                    left: 30,
+                    top: 20,
+                    right: 20,
+                    bottom: 20
+                },
+
+            }
+        }
+    })
+
+    // mudando cor de fonte de tudo
+    Chart.defaults.global.defaultFontColor = "white";
+</script>
+
+<script>
+    function mostdois() {
+        myChart2.style.display = 'block'
+        odois.style.display = 'block'
+        mdois.style.display = 'none'
+    }
+
+    function ocultdois() {
+        myChart2.style.display = 'none'
+        odois.style.display = 'none'
+        mdois.style.display = 'block'
+    }
+
+
+    var ctx = document.getElementById('myChart2');
+
+
+    var meuGrafico2 = new Chart(ctx, {
+
+
+        type: 'pie',
+
+        data: {
+
+ 
+            labels: ["Probabilidade de Pragas"],
+
+            labels: ["Probabilidade de Pragas"],
+
+
+            datasets: [
+
+                {
+                    label: "",
+                    data: [2, 98],
+                    borderWidth: 10,
+                    borderColor: 'transparent',
+                    borderWidth: 1,
+                    backgroundColor: ['red','green'],
+                },
+
+
+            ]
+        },
+        options: {
+
+            title: {
+                display: true,
+                fontSize: 20,
+                text: "Pragas",
+                position: 'top',
+            },
+            legend: {
+                display: true,
+                reverse: true,
+                position: 'bottom'
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    top: 50
+                },
+
+            }
+        }
+    })
+
+    Chart.defaults.global.defaultFontColor = 'rgb(0,0,0)';
+</script>

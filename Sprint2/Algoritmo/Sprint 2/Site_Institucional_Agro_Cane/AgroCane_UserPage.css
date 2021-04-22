@@ -1,0 +1,212 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.header {
+    background-color: #55A54E;
+    color: #EDE9A2;
+    overflow: auto;
+    border-bottom: 4px solid #EDE9A2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar {
+    float: right;
+    list-style: none;
+}
+
+.main_title {
+    margin: 0;
+    float: left;
+    padding-top: 5px;
+}
+
+.navbar li {
+    float: left;
+    margin-left: 15px;
+    text-transform: uppercase;  
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.contrast {
+    color: #006400;
+    text-align: center;
+}
+
+.bt_login {
+    background-color: #EDE9A2;
+    border: none;
+    text-transform: uppercase;
+    color: #55A54E;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 1px 6px;
+}
+
+a {
+    text-decoration: none;
+    color: #EDE9A2;
+}
+
+.dashboard {
+    overflow: auto;
+    background-image: url(img/farm_client.jpeg);
+    height: auto;
+    border-bottom: 4px solid #EDE9A2;
+}
+
+.client_inform {
+    text-align: center;
+    margin-top: 10px;
+    color: #006400;
+}
+
+.company {
+    background-color: #F9F8E3;
+}
+
+.dashboard img {
+    width: 222px;
+    float: left;
+    height: 187px;
+    margin-top: 0.5%;
+    border-radius: 10px;
+}
+
+.production {
+    background-color: rgba(255, 255, 255, 0.781);
+    margin-top: 0.5%;
+    margin-left: 1%;
+    width: 18%;
+    text-align: center;
+
+    float: left;
+    padding: 3%;
+    color: black;
+    border-radius: 10px;
+}
+
+.hectare {
+    background-color: rgba(255, 255, 255, 0.781);
+    float: left;
+    margin-top: 0.5%;
+    margin-left: 1%;
+    width: 21%;
+    text-align: center;
+    padding: 3%;
+    color: black;
+    border-radius: 10px;
+}
+
+.data_number {
+    font-size: 50px;
+    color: black;
+    margin: 1px;
+    padding-bottom: 5px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.api {
+    background-color: rgba(255, 255, 255, 0.781);
+    margin-top: 0.5%;
+    margin-left: 1%;
+    float: left;
+    width: 19%;
+    text-align: center;
+    padding: 3%;
+    color: black;
+    border-radius: 10px;
+}
+
+.api_text {
+    color: black;
+    margin: 5px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.graphic {
+    width: 70%;
+    text-align: center;
+}
+
+.box-graphic {
+    width: 70%;
+    background-color: rgba(255, 255, 255, 0.781);
+    float: left;
+    margin-top: 2.5%;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    padding-right: 1%;
+}
+.box-graphic1 {
+    width: 90%;
+    float: right;
+    height: auto;
+    border-radius: 10px;
+    text-align: center;    
+    margin-bottom: 10px;
+    padding-right: 125px;
+    padding-bottom: 116px;
+}
+
+.graphic_resume {
+    text-align: center;
+    color: black;
+}
+
+.benefit {
+    font-size: x-large;
+    color: #55A54E;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: #55A54E;
+    padding-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    margin: 0;
+    padding-top: 0;
+}
+
+.contrast-footer {
+    color: #006400;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+.dashboard .dashboard .box-graphic{
+    float: left;
+}
+.containersensors
+{
+width: 100%;
+float: left;
+}
+.containersensors .dashboard_dois
+{
+width: 50%;
+float: left; 
+border: #55a44e;
+}
+
+.alinhamento{
+    width: 93%;
+    height: 10%;
+}
