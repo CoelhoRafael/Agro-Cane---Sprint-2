@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+.header {
+    background-color: #55A54E;
+    color: #EDE9A2;
+    overflow: auto;
+    border-bottom: 4px solid #EDE9A2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar {
+    float: right;
+    list-style: none;
+}
+
+.main_title {
+    margin: 0;
+    float: left;
+    padding-top: 5px;
+}
+
+li {
+    float: left;
+    margin-left: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.contrast {
+    color: #006400;
+    text-align: center;
+}
+
+.bt_register {
+    background-color: #EDE9A2;
+    border: none;
+    text-transform: uppercase;
+    color: #55A54E;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 1px 6px;
+}
+
+.bannerhome{
+    background-color: #b1b1b1;
+    text-align: center;
+    background-image: url(img/simlator.jpeg);
+    background-repeat: no-repeat;
+    height: auto;
+    background-size:cover;   
+    overflow: auto;   
+    border-bottom: 5px solid #EDE9A2;  
+}
+   
+.bannerhome h1{
+    margin: 0;
+    font-size: 35px;
+    padding-top: 50px;
+    padding-bottom: 15px;
+}
+    
+.porque button{
+    border: 0;
+    background-color: #55a44e;
+    color:#ede9a3 ;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+        
+.porque{
+    text-align: center;
+    margin-top: 5px;
+    height: 600px;
+    margin: 40px 60px;
+    padding: 5px 90px;
+    background-color: #ede9a2e8;
+    border-radius: 20px;
+    box-shadow: 5px 7px 13px 1px black;
+}
+    
+.footer {
+    background-color: #55A54E;
+    padding-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    margin: 0;
+    padding-top: 0;
+}
+
+.contrast-footer {
+    color: #006400;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+.cane {
+    color: #EDE9A2;
+}
+
+.porque .container h1{
+    color:  #232323;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+    
+.porque  {   
+    border-top: 5px solid #ede9a3;
+}
+
+.container{
+    text-align: center;
+}
+
+.porque .container input{
+    border-radius: 10px;
+}
+
+.porque .container button{
+    margin-top: 10px;
+    margin-left: 10px;
+    text-transform: uppercase;
+    border-radius: 20px;
+    background-color: #55A54E;
+    width: 150px;
+}
+
+

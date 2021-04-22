@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Cane | Login</title>
+    <link rel="stylesheet" href="AgroCane_Login.css">
+    <link rel="sortcut icon"
+        href="https://raw.githubusercontent.com/vitoriasilva98/Agro-Cane-BandTec/main/Sprint1/Algoritmo/Simulador/Vitoria-da-Silva/favicon.png"
+        type="image/png" />
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="container">
+
+            <h1 class="main_title">
+                <span class="contrast">Agro</span> Cane
+            </h1>
+
+            <img src="Logo_Folha.PNG" alt="Logo" class="logo">
+
+            <ul class="navbar">
+
+                <li>
+                    <a href="AgroCane_Home_Oficial.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AgroCane_About_Us.html">
+                        Sobre nós
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AgroCane_Services.html">
+                        Serviços
+                    </a>
+                </li>
+
+                <li>
+                    <a href="AgroCane_Simulador_Financeiro.html">
+                        Simulador
+                    </a>
+                </li>
+
+                <li>
+                    <span class="register">
+                        <button class="bt_login">
+                            Login
+                        </button>
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pag-login">
+        <div class="container">
+            <div class="box-login">
+                <h1>Login</h1>
+
+                <form action="">
+                    <input id="user" class="input" placeholder="USUÁRIO" type="text" name="login"><br>
+                    <input id="pass" class="input" placeholder="SENHA" type="password" name="password"><br>
+
+                    <div id="result"></div>
+
+                    <div class="contact_us">
+                        <a href="AgroCane_Contact.html">
+                            Contato
+                        </a>
+                    </div>
+
+                    <button class="bt_register" onclick="login()"><a id="efetuarlogin"> Entrar </a></button>
+
+                </form>
+
+                <button class="bt_register"><a href="AgroCane_Register.html"> Cadraste-se </a></button><br>
+                <br>
+                <img src="Logo_Folha.PNG" alt="Logo" class="logo">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h2 class="contrast-footer">Agro <span class="cane">Cane</span></h2>
+            <h5 class="copyright">Copyright © 2021 Agro Cane. Todos os direitos reservados.</h5>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script>
+
+    function login() {
+
+        if ((user.value == "Fernando B.") && (pass.value == "#Fernando123")) {
+            efetuarlogin.href = 'AgroCane_UserPage.html';
+        }
+
+        else if ((user.value == "Kaline B.") && (pass.value == "#Kaline123")) {
+            efetuarlogin.href = 'AgroCane_UserPage.html';
+        }
+
+        else if ((user.value == "Fernanda C.") && (pass.value == "#Fernanda123")) {
+            efetuarlogin.href = 'AgroCane_UserPage.html';
+        }
+        else {
+            result.innerHTML = `Senha Inválida ou usuário inválido!!`;
+        }
+
+    }
+
+
+
+
+
+
+
+</script>
