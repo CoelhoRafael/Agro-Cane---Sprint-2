@@ -19,19 +19,22 @@ select * from Cliente;
 create table Areas (
 idAreas int primary key auto_increment,
 fkCliente int,
-tamanhoArea float,
+nome varchar (45),
+localidade varchar (45),
 foreign key (fkCliente) references Cliente(idCliente)
 ) auto_increment = 1000;
 
 insert into Areas values
-(Null, "1", "500"),
-(Null, "1", "500"),
-(Null, "1", "490"),
-(Null, "2", "250"),
-(Null, "2", "250"),
-(Null, "2", "230");
+(Null, "1", 'H1', 'Leste'),
+(Null, "1", 'H2', 'Oeste'),
+(Null, "1", 'H3', 'Sul'),
+(Null, "2", 'H1', 'Norte'),
+(Null, "2", 'H2', 'Leste'),
+(Null, "2", 'H3', 'Centro-Oeste');
 
 select * from Areas;
+
+select * from cliente inner join areas on idCliente=fkCliente;
 
 create table Sensor (
 idSensor int primary key auto_increment,
@@ -59,7 +62,7 @@ temperatura float,
 umidade float,
 dataDado datetime,
 fkSensor int,
-foreign key (fkSensor) references Sensor(idSensor)
+foreign key (fkSensor) references Sensor (idSensor)
 ) auto_increment = 9000;
 
 insert into dadoSensor values
@@ -68,7 +71,9 @@ insert into dadoSensor values
 (Null, "11.7", "19", "2021-04-19 12:00", "5002"),
 (Null, "27.0", "52", "2021-04-19 12:00", "5003"),
 (Null, "26.6", "50", "2021-04-19 12:00", "5004"),
-(Null, "34.2", "75", "2021-04-19 12:00", "5005"),
+(Null, "34.2", "75", "2021-04-19 12:00", "5005");
+
+insert into dadoSensor values
 (Null, "28.0", "57", "2021-04-19 13:00", "5000"),
 (Null, "25.0", "51", "2021-04-19 14:00", "5000"),
 (Null, "23.3", "48", "2021-04-19 13:00", "5001"),
@@ -85,9 +90,7 @@ insert into dadoSensor values
 select * from dadoSensor; 
 
 select * from Sensor inner join dadoSensor where idSensor = fkSensor;
-
-select idSensor, regiao, quadrante, statusSensor, temperatura, umidade, dataDado from Sensor inner join dadoSensor where idSensor = fkSensor;
-
+select idSensor, regiao, quadrante statusSensor, temperatura, umidade, dataDado from Sensor inner join dadoSensor where idSensor = fkSensor;
 
 create table Usuario (
 idUsuario int primary key auto_increment,
@@ -128,13 +131,5 @@ select * from Acesso;
 select * from Cliente join Usuario on idCliente = fkCliente;
 
 select * from Cliente inner join Areas on idCliente = fkCliente inner join Sensor on idAreas = fkAreas inner join dadoSensor on idSensor = fkSensor;
-
-
-
-
-
-
-
-
 
 
