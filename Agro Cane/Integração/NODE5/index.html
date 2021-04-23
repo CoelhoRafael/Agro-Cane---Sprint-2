@@ -316,6 +316,7 @@
 			document.getElementById('average').textContent = obj.average;
 			document.getElementById('averageHour').textContent = obj.averageHour;
 		}
+		Chart.defaults.global.defaultFontColor = "black";
 
 		get_temperature();
 
@@ -376,7 +377,7 @@
 			document.getElementById('averageHumidity').textContent = obj.average;
 			document.getElementById('averageHourHumidity').textContent = obj.averageHour;
 		}
-
+		Chart.defaults.global.defaultFontColor = "black";
 		get_dataHumidity();
 
 		//Thirty Graphic
@@ -501,7 +502,7 @@
 				}
 			}
 		};
-
+		Chart.defaults.global.defaultFontColor = "black";
 		var chartLumi = new Chart(context4, lumi_sensor);
 
 		//Função para obter os dados de temperatura do server
