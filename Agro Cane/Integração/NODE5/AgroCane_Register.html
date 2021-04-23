@@ -99,19 +99,19 @@
         var Special_Ch = /([~,!,@,#,$,%,^,&,*,-,_,+,=,?,>,<])/;
 
         if ((email.value.indexOf("@")) < 1 && (email.value.indexOf(".com"))) {
-            alert("Invalid email!!");
+            alert("Email Inválido!!!");
         } else if (password.value.length < 5) {
-            alert("Your password must have at least FIVE characters!!!")
+            alert("Sua senha deve ter pelo menos CINCO caracteres!!!")
         } else if (password.value != confirm_password.value) {
-            alert("Your password confirmation must be the same of your password!");
+            alert("A confirmação da sua senha deve ser igual sua senha!!!");
         } else if (password.value.match(number) < 1) {
-            alert("Your password must have at least one number!!!");
+            alert("Sua senha deve ter pelo menos um número!!!");
         } else if (password.value.match(alphabet) < 1) {
-            alert("Your passwaord must have letters!!!");
+            alert("Sua senha deve conter letras!!!");
         } else if (password.value.match(Special_Ch) < 1) {
-            alert("Your password must have at least one special character!!!")
+            alert("Sua senha deve ter pelo menos um caractere especial!!!")
         } else {
-            alert("Successful Registration!")
+            alert("Cadastro Efetuado com Sucesso!!!")
         }
     }
 </script>
