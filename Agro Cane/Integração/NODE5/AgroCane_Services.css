@@ -52,7 +52,7 @@ li {
     padding: 1px 6px;
 }
 
-.banner {
+.banner3 {
     background-image: url(img/tech.jpg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -154,7 +154,7 @@ a {
     float: left;
 }
 
-.banner2 {
+.banner4 {
     background-image: url(img/profit.jpeg);
     background-size: cover;
     background-repeat: no-repeat;

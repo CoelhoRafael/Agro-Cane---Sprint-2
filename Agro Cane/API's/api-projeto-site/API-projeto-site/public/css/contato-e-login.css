@@ -1,93 +1,91 @@
-/* PÁGINA DO CONTATO */
-
-.contato {
-    background-color: #ecf0f1;
-}
-
-.contato .container {
-    overflow: auto;
-}
-
-.contato h1 {
-    padding: 40px 0;
-}
-
-.formulario {
-    float: left;
-    width: 500px;
-}
-
-form label, form p{
-    display: block;
-    font-size: 20px;
-    margin-bottom:10px ;
-}
-
-.btn-green {
-    color: white;
-    background-color: green;
-    margin: 20px 0 50px 0;
-    border: 0;
-    padding: 10px 20px;
-
-    border-radius: 5px;
-    float: left;
-    cursor: pointer;
-}
-
-.imagem-lateral {
-    overflow: auto;
-}
-
-.contato img {
-    float: right;
-    width: 85%;
-}
-
-.input-padrao {
-    display: block;
-    margin-bottom: 20px;
-    padding: 10px 25px;
-    width: 90%;
-
-    border-radius: 5px;
-    border: solid 1px #bbbbbb;
-}
-
-.div-radio {
-    margin-bottom: 30px;
-}
 
 /* PÁGINA DO LOGIN */
 
+.bt_login {
+    background-color: #EDE9A2;
+    border: none;
+    text-transform: uppercase;
+    color: #55A54E;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 1px 6px;
+}
+
+a {
+    text-decoration: none;
+    color: #EDE9A2;
+}
+
 .pag-login {
-    background-color: #ecf0f1;
-    text-align: center;
-    padding: 50px 0;
-}
-
-.pag-login h1 {
-    margin-bottom: 40px;
-}
-
-.pag-login .input-padrao {
-    width: 50%;
-    display: inline-block;
+    background-image: url(../img/farm.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 578px;
+    overflow: auto;
+    border-bottom: 6px solid #EDE9A2;
 }
 
 .box-login {
-    display: inline-block;
-    background-color: white;
-    box-shadow:  3px 3px 5px 2px #ccc;
-    padding: 60px 20px 0px 20px;
-    border-radius: 20px;
-    width: 400px;
+    background-color: #55A54E;
+    width: 40%;
+    margin-top: 5%;
+    margin-left: 30%;
+    margin-right: 50%;
+    padding: 20px;
+    text-align: center;
+    /* box-shadow: eixoX eixoY blurry (embaçado) spread (espaçamento)*/
+    box-shadow: 5px 7px 13px 1px black;
 }
 
-.pag-login .btn-green {
-    display: block;
-    float: none;
-    margin: auto;
+.box-login h1 {
+    color: #EDE9A2;
+}
+
+.input {
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 10px 50px 10px 50px;
+    border-radius: 20px;
+    
+}
+
+.bt_enter {
+    border: none;
+    background-color: #EDE9A2;
+    padding: 5px 117px;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #006400;
+    border-radius: 20px;
+}
+
+.contact_us a {
+    list-style: none;
+    font-size: small;
+    color: #006400;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 1px;
+    margin-bottom: 10px;
+}
+
+.bt_register {
+    border: none;
+    text-transform: uppercase;
+    margin-top: 3%;
+    padding: 6px 100px;
+    background-color: #006400;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    box-shadow: 5px 7px 13px 0.5px black;
+}
+
+.box-login img {
+    width: 10%;
 }
 
 /* EXTRA */
@@ -97,12 +95,72 @@ form label, form p{
 }
 
 .extra img {
-  height: 50px;
+   width: 70px;
    visibility: hidden;
+   background-color: #EDE9A2;
+   border-radius: 100%;
 }
 
 .extra .msg_erro {
     background-color: sandybrown; 
     color: black; 
     visibility: hidden;
+}
+
+/* Cadastro */
+
+.contato {
+    background-image: url(../img/farm.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 830px;
+    overflow: auto;
+    border-bottom: 6px solid #EDE9A2;
+}
+
+.formulario {
+    background-color: #55A54E;
+    width: 40%;
+    margin-top: 2%;
+    margin-left: 30%;
+    margin-right: 50%;
+    padding: 20px;
+    text-align: center;
+    /* box-shadow: eixoX eixoY blurry (embaçado) spread (espaçamento)*/
+    box-shadow: 5px 7px 13px 1px black;
+    color: #333333;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+.formulario h1 {
+    color: #006400;
+}
+
+.input {
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 5px 80px 5px 80px;
+    border-radius: 20px;
+}
+
+.bt_register {
+    border: none;
+    text-transform: uppercase;
+    margin-top: 5%;
+    padding: 6px 100px;
+    background-color: #006400;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 5px 7px 13px 0.5px black;
+}
+
+.formulario img {
+    width: 60px;
+    background-color: #EDE9A2;
+    border-radius: 100%;
+    text-align: center;
 }
