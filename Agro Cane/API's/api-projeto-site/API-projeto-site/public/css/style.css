@@ -1,243 +1,547 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
-    padding: 0;
-        /* SÓ COLOCAR QUANDO COLOCAR COR NO HEADER */
     margin: 0;
-        /* SÓ COLOCAR QUANDO COLOCAR COR NO HEADER */
-        background-color: rgb(255, 95, 37);
 }
 
-.container { 
+.container {
     width: 80%;
     margin: auto;
 }
 
-h1 {
+.header {
+    background-color:#55A54E;
+    color: #EDE9A2;
+    overflow: auto;
+    border-bottom: 4px solid #EDE9A2;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar {
+    float: right;
+    list-style: none;
+}
+
+.main_title {
     margin: 0;
-    padding: 0;
+    float: left;
+    padding-top: 5px;
+}
+
+body .header .navbar li {
+    
+    float: left;
+    margin-left: 15px;
+    text-transform: uppercase;
+    font-weight: bold; /*Peso da fonte*/
+    font-size: 15px;
+}
+
+.contrast {
+    color: #006400;
+    text-align: center;
+}
+.bt_register1 {
+    background-color: #EDE9A2;
+    border: none;
+    text-transform: uppercase;
+    color: #55A54E;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 1px 6px;
+}
+
+.services_bt {
+    background-color: #006400;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: medium;
+    border-radius: 8px;
+    border: 0;
+    padding: 10px 50px;
+}
+
+.services {
+    text-align: center;
+}
+
+.banner {
+    background-image: url(../img/Rectangle\ 6-000.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 450px;
+    border-bottom: 5px solid #EDE9A2;
+}
+
+.banner .container .contrast {
+    margin-top: 0;
+    padding-top: 150px;
+    padding-bottom: 10px;
+    color: white;
+    font-size: 40px;
+}
+
+.reason {
+    background-color: #55A54E;
+    border-bottom: 5px solid #EDE9A2;
+}
+
+.reason_text {
+    padding-right: 60px;
+    padding-left: 60px;
+    text-align: center;
+}
+
+.reason .container .contrast {
+    text-align: center;
+    font-weight: bold;
+    margin: 0;
+    padding-top: 25px;
+    padding-bottom: 15px;
+    color: #333333;
+}
+
+.reason .container .reason_text {
+    padding-bottom: 20px;
+}
+
+.box img {
+    height: 130px;
+}
+
+.box {
+    overflow: auto;
+    background-color: #333333;
+    border-bottom: 4px solid #EDE9A2;
+}
+
+.box-item {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 2.5%;
+    margin-left: 2.5%;
+    float: left;
+    text-align: center;
+    width: 22%;
+    padding: 2.7%;
+    background-color: white;
+    border-radius: 40px 5px 40px 5px;
+    border-bottom: 10px solid #55A54E;
+    border-right: 10px solid #55A54E;
+}
+
+.big_box img {
+    height: 400px;
+    width: 26%;
+    text-align: center;
+    padding: 10px 30px 10px 30px;
+    border-radius: 70px;
+}
+
+.market {
+    border-bottom: 3px solid #EDE9A2;
+    background-image: url(../img/farm.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.market .contrast {
+    color: #333333;
+    margin: 0;
+    padding-top: 50px;
+    padding-bottom: 35px;
+}
+
+.market .container .big_box {
+    background-color: #f1efc0;
+    padding: 20px;
+    margin-bottom: 80px;
+    border-bottom: 6px solid #333333;
+    border-left: 6px solid #333333;
+    border-radius: 80px;
+}
+
+.paragraph {
+    padding-left: 50px;
+    padding-right: 80px;
+    text-align: center;
+}
+
+.paragraph .contrast {
+    color: #006400;
+    font-weight: bold;
+}
+
+.footer {
+    background-color: #55A54E;
+    padding-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    margin: 0;
+    padding-top: 0;
+}
+
+.contrast-footer {
+    color: #006400;
+    text-align: center;
+    margin-top: 0;
+    padding-top: 15px;
+}
+
+.cane {
+    color: #EDE9A2;
 }
 
 a {
     text-decoration: none;
+    color: #EDE9A2;
 }
 
-/* CABEÇALHO */
+/*Sobre*/
 
-.header {
-    background-color: #232323;
-        /*overflow: auto; /* cuidado*/
-    height: 100px;
-        /*ATENÇÃO VOLTA A NAV AQUI SE SUMIR*/
-    border-bottom: 3px solid orangered;
-}
-
-.header .container {
-    height: 80px;
-}
-
-.header .container .highlight {
-    color: orangered
-}
-
-.header h1 {
-    margin: 0;
-    padding: 0;
-    float: left;
-        /*ATENÇÃO - VAI SUMIR A NAV*/
-    margin-top: 30px;
-    color: white;
-}
-
-.header ul {
-    list-style-type: none;
-        /*ATENÇÃO - NAO É NO NAV*/
-    float: right;
-        /*ATENÇÃO - VAI SUMIR A NAV*/
-    margin-top: 40px;
-}
-
-.header li {
-    float: left;
-        /*ATENÇÃO ORDENE OS ITENS NA MESMA ORDEM QUE ESTÃO NO HTML*/
-    margin-left: 18px;
-        /* FIM*/
-}
-
-.header a {
-    text-transform: uppercase;
-    color: white;
-}
-
-.header a:hover {
-    font-weight: bold;
-}
-
-.header .current {
-    color: orangered;
-    font-weight: bold;
-}
-
-/* JUMBOTRON 
-    aka BANNER */
-
-/*colocar tudo que está acima em header */
-
-.banner {
-    height: 400px;
-    width: 100%;
-    background: url(../img/banner-fundo.jpeg);
+.banner2 {
+    background-image: url(../img/Rectangle\ 6-000.png);
+    background-repeat: no-repeat;
     background-size: cover;
+    height: 580px;
+    border-bottom: 5px solid #EDE9A2;
+    margin-bottom: 0;
 }
 
-.banner .container {
-    height: 400px;
-}
-
-.banner .texto {
-    color: gray;
-    text-align: center;
-    padding-top: 150px;
-
-}
-
-.banner .titulo {
-    font-size: 48px;
-    color: orangered;
-}
-
-/* NOVIDADES */
-
-.novidades {
-    background-color: #232323;
-    height: 90px;
-}
-
-.novidades .container {
-    padding: 30px 0;
-}
-
-
-.novidades button {
-    color: white;
-    background-color: orangered;
-    text-transform: uppercase;
-    width: 180px;
-    margin: auto;
-    display: block; /* Default de botão é inline-block. Com block, margin auto funciona*/
-    border: 0;
-    height: 38px;
-    padding: 0 20px;
-    cursor: pointer;
-}
-
-/* ICONES */
-
-.box {
+.about_us {
+    margin: 0;
     overflow: auto;
-    background-color: #fff ;
 }
 
-.box .box-item {
+.about_us-title {
+    margin: 0;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.about_us-box {
+    background-color: #ede9a2ec;
+    padding: 40px 130px 20px 130px;
+    margin: 95px;
+    text-align: justify;
+    border-bottom: 10px solid #555555;
+    border-left: 10px solid #555555;
+    border-radius: 30px;
+}
+
+.about_us-box .we_are-phrase {
+    text-align: center;
+}
+
+.banner_team_box {
+    background-image: url(../img/team.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 4px solid #EDE9A2;
+    padding-bottom: 50px;
+}
+
+.banner_team_box .team {
+    margin: 0;
+    overflow: auto;
+}
+
+.team_box {
+    margin: 95px;
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+
+.team_box h1 {
+    background-color: rgba(255, 250, 250, 0.637);
+    margin-left: 40%;
+    margin-right: 40%;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+.box2 img {
+    width: 30%;
+    margin: 1%;
     float: left;
-    width: 33%;
-    text-align: center;
-    margin: 50px 0;
-}
-
-.box .box-item img {
-    height: 100px;
-}
-
-/* FOOTER */
-
-.footer {
-    background-color: rgb(255, 95, 37);
-    text-align: center;
-    height: 100px;
-}
-
-.footer h4 {
-    color: white;
-    font-weight: 100;
-    margin: 0;
-    padding-top: 40px;
-}
-
-/* SOBRE - ASSUNTOS */
-
-.assuntos {
-    background-color: rgb(241, 241, 241);
-    overflow: auto;
-    padding-top: 30px;
-    text-align: center;
-    padding-bottom: 50px; /*aqui oh a diferença entre padding e margin*/
-    color: #3d3d3d
-}
-
-.assuntos .assunto {
-    border-bottom: 3px solid orangered;
-    background-color: white;
-    padding: 50px 15px;
-    float: left;
-    width: 40%;
-    margin-left: 5%; 
-}
-
-.assuntos h2 {
-    margin: 0;
-    padding: 0;
-    text-transform: uppercase;
-}
-
-.assuntos p {
-    line-height: 1.5;
-}
-
-/* SOBRE - INTEGRANTES */
-
-.nosso-time {
-    background-color: #232323;
-    text-align: center;
-    overflow: auto;
-} 
-
-.nosso-time h2 {
-    margin: 0;
-    padding-top: 25px;
-    color: white;
-    text-transform: uppercase;
-}
-
-.nosso-time .integrantes {
-    color: white;
-    overflow: auto;
     margin-top: 30px;
-    padding-bottom: 35px;
+    border: 4px solid #EDE9A2;
+    border-radius: 15px;
 }
 
+.box2 {
+    margin: 0%;
+    text-align: center;
+}
 
-.nosso-time .integrantes .integrante {
-    /*border: 3px solid cyan;*/
-    width: 18%;
+/* Serviços */
+
+.banner3 {
+    background-image: url(../img/tech.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 650px;
+    overflow: auto;
+    border-bottom: 5px solid #EDE9A2;
+}
+
+.services {
+    margin: 0;
+    overflow: auto;
+}
+
+.big_box_services {
+    text-align: justify;
+    margin-top: 150px;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 15px 40px 20px 40px;
+    background-color: #928e8eb6;
+    border-radius: 32px;
+    border-bottom: 4px solid #EDE9A2;
+    border-left: 4px solid #EDE9A2;
+    padding-bottom: 70px;
+}
+
+a {
+    text-decoration: none;
+    color: #EDE9A2;
+}
+
+.information {
+    overflow: auto;
+    background-color: #333333;
+    border-bottom: 6px solid #EDE9A2;
+}
+
+.boxes {
+    margin-top: 30px;
+}
+
+.box_information {
     float: left;
-    padding: 1%;
-    line-height: 1.5;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 0;
 }
 
-.nosso-time .integrante img {
-    height: 100px;
-    background-color: #ff8968;
-    border-radius: 50%;
-    padding: 10px;
+.text_information {
+    float: right;
+    width: 35%;
+    margin-bottom: 0;
+    padding: 80px 100px 0px 90px;
+    text-align: center;
+    color: white;
+    font-size: x-large;
 }
 
-/* ASSUNTO GRANDE */
+.box_information2 {
+    float: right;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 0;
+}
 
-.assuntos .assunto-grande {
-    border-bottom: 3px solid orangered;
-    background-color: white;
-    padding: 50px 30px;
+.text_information2 {
     float: left;
-    /* width: 450px; */
-    margin-left: 55px; 
+    width: 35%;
+    margin-bottom: 0;
+    padding: 80px 90px 0px 70px;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+}
+
+.box_information2 img {
+    width: 50%;
+    margin: 0;
+    padding-bottom: 0;
+    float: right;
+}
+
+.text_information2 h1 {
+    padding-bottom: 25px;
+    text-transform: uppercase;
+    color: #EDE9A2;
+}
+
+.text_information h1 {
+    padding-bottom: 25px;
+    text-transform: uppercase;
+    color: #EDE9A2;
+}
+
+.box_information img {
+    width: 50%;
+    margin: 0;
+    padding-bottom: 0;
+    float: left;
+}
+
+.banner4 {
+    background-image: url(../img/profit.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 720px;
+    overflow: auto;
+    border-bottom: 5px solid #EDE9A2;
+}
+
+.profit {
+    background-color: #333333ec;
+    margin-top: 15%;
+    text-align: center;
+    margin-left: 160px;
+    margin-right: 160px;
+}
+
+.data_profit {
+    padding: 10px 70px 10px 70px;
+    font-size: large;
+    color: white;
+    box-shadow: 5px 7px 13px 1px black;
+}
+
+.data_profit h1 {
+    text-transform: uppercase;
+    color: #EDE9A2;
+}
+
+.bt_contact {
+    background-color: #EDE9A2;
+    text-transform: uppercase;
+    color: #333333;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding: 10px 20px;
+    box-shadow: 5px 7px 13px 1px black;
+}
+
+.bt_register_c {
+    background-color: #55A54E;
+    text-transform: uppercase;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    padding: 10px 20px;
+    box-shadow: 5px 7px 13px 1px black;
+}
+
+/* Simulador */
+
+.bannerhome{
+    background-color: #b1b1b1;
+    text-align: center;
+    background-image: url(../img/simlator.jpeg);
+    background-repeat: no-repeat;
+    height: auto;
+    background-size:cover;   
+    overflow: auto;   
+    border-bottom: 5px solid #EDE9A2;  
+}
+   
+.bannerhome h1{
+    margin: 0;
+    font-size: 35px;
+    padding-top: 50px;
+    padding-bottom: 15px;
+}
+    
+.porque button{
+    border: 0;
+    background-color: #55a44e;
+    color:#ede9a3 ;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px 30px;
+    margin-top: 20px;
+    font-weight: 600;
+}
+        
+.porque{
+    text-align: center;
+    margin-top: 5px;
+    height: 600px;
+    margin: 40px 60px;
+    padding: 5px 90px;
+    background-color: #ede9a2e8;
+    border-radius: 20px;
+    box-shadow: 5px 7px 13px 1px black;
+}
+
+/* Contato */
+
+.bt_login {
+    background-color: #EDE9A2;
+    border: none;
+    text-transform: uppercase;
+    color: #55A54E;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 1px 6px;
+}
+
+.pag-login {
+    background-image: url(../img/farm.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 578px;
+    overflow: auto;
+    border-bottom: 6px solid #EDE9A2;
+}
+
+.box-login {
+    background-color: #55A54E;
+    width: 40%;
+    margin-top: 9%;
+    margin-left: 30%;
+    margin-right: 50%;
+    padding: 20px;
+    text-align: center;
+    /* box-shadow: eixoX eixoY blurry (embaçado) spread (espaçamento)*/
+    box-shadow: 5px 7px 13px 1px black;
+    color: #333333;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+.box-login h1 {
+    color: #EDE9A2;
+    margin-bottom: 0;
+}
+
+.input {
+    border: none;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding: 5px 80px 5px 80px;
+    border-radius: 20px;
+}
+
+.bt_register {
+    border: none;
+    text-transform: uppercase;
+    margin-top: 5%;
+    padding: 6px 100px;
+    background-color: #006400;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    box-shadow: 5px 7px 13px 0.5px black;
 }

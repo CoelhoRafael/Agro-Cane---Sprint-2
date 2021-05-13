@@ -52,7 +52,7 @@ body .header .navbar li {
     padding: 1px 6px;
 }
 
-.banner {
+.banner2 {
     background-image: url(img/Rectangle\ 6-000.png);
     background-repeat: no-repeat;
     background-size: cover;
@@ -113,7 +113,7 @@ body .header .navbar li {
     border-radius: 10px;
 }
 
-.box img {
+.box2 img {
     width: 30%;
     margin: 1%;
     float: left;
@@ -122,7 +122,7 @@ body .header .navbar li {
     border-radius: 15px;
 }
 
-.box {
+.box2 {
     margin: 0%;
     text-align: center;
 }
