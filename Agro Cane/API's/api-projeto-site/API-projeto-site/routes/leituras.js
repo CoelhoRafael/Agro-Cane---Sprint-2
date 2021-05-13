@@ -8,6 +8,7 @@ var env = process.env.NODE_ENV || 'development';
 router.get('/ultimas/:idcaminhao', function(req, res, next) {
 	
 	// quantas são as últimas leituras que quer? 7 está bom?
+	
 	const limite_linhas = 7;
 
 	var idcaminhao = req.params.idcaminhao;
