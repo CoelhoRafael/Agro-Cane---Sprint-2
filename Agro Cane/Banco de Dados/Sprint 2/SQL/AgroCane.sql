@@ -10,7 +10,7 @@ hectares int,
 qntSensores int
 );
 
-insert into Cliente values
+insert into Cliente values														
 (Null, "Raízen", "São Paulo", "08070508000178", "860", "43"),
 (Null, "Biosev", "São Paulo", "15527906000136", "404", "20");
 
@@ -131,5 +131,11 @@ select * from Acesso;
 select * from Cliente join Usuario on idCliente = fkCliente;
 
 select * from Cliente inner join Areas on idCliente = fkCliente inner join Sensor on idAreas = fkAreas inner join dadoSensor on idSensor = fkSensor;
+
+start transaction;
+
+alter table Usuario add column nomeUsuario varchar(75);
+
+commit;
 
 
