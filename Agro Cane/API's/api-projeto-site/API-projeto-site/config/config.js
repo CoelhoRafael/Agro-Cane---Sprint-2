@@ -25,9 +25,9 @@ module.exports = {
   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
   dev: {
     // altere APENAS username, password e database.
-    username: 'Dev',
+    username: 'root',
     password: 'bandtec',
-    database: 'AgroCane',
+    database: 'agroCane',
     host: 'localhost',
     dialect: 'mysql',
     xuse_env_variable: 'DATABASE_URL',
