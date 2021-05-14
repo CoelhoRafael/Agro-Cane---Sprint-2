@@ -6,9 +6,9 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 */
 
 module.exports = (sequelize, DataTypes) => {
-    let Cliente = sequelize.define('Cliente',{	
+    let cliente = sequelize.define('cliente',{	
 		id: {
-			field: 'idCliente',
+			field: 'idcliente',
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
@@ -65,5 +65,5 @@ module.exports = (sequelize, DataTypes) => {
 		timestamps: false,
 	});
 
-    return Leitura;
+    return cliente;
 };

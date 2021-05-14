@@ -40,7 +40,7 @@ router.post('/autenticar', function(req, res, next) {
 router.post('/cadastrar', function(req, res, next) {
 	console.log('Criando um usuário');
 	
-	Cliente.create({
+	cliente.create({
 		nomeEmpresa : req.body.nomeEmpresa,
 		nomeResp : req.body.nomeResp,
 		email: req.body.email,
