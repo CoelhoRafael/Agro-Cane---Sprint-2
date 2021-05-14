@@ -15,8 +15,7 @@ tanto local (workbench) quanto remoto (azure)
 Caso dê certo, vá para o passo #7.1.
 Caso dê errado, vá pra o passo #7.2.
 
-7.1. (caso o passo #6 tenha dado certo) Execute "nodemon --exec npm start" (vá para passo 8)
-
+nodemon --exec npm start
 7.2. (caso o passo #6 tenha dado errado) Execute "npm start" (vá para passo 8)
 
 >>> Atenção ao ambiente que aparecerá no terminal! Production ou dev. <<<

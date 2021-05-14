@@ -8,14 +8,29 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 module.exports = (sequelize, DataTypes) => {
     let Cliente = sequelize.define('Cliente',{	
 		id: {
-			field: 'idCliente',
+			field: 'idcliente',
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
 		},	
-		nome: {
-			field: 'nome',
+		nomeEmpresa: {
+			field: 'nomeEmpresa',
 			type: DataTypes.STRING(100), 
+			allowNull: false
+		},
+		nomeResp: {
+			field: 'nomeResp',
+			type: DataTypes.STRING(75), 
+			allowNull: false
+		},
+		email: {
+			field: 'email',
+			type: DataTypes.STRING(60), 
+			allowNull: false
+		},
+		senha: {
+			field: 'senha',
+			type: DataTypes.STRING(20), 
 			allowNull: false
 		},
 		estado: {
@@ -33,10 +48,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			allowNull: false
 		},
-        qtdSensores: {
-			field: 'qtdSensores',
+        qntSensores: {
+			field: 'qntSensores',
 			type: DataTypes.INTEGER,
-			allowNull: false
+			allowNull: true
 		},
 		momento_grafico: {
 			type: DataTypes.VIRTUAL, // campo 'falso' (não existe na tabela). Deverá ser preenchido 'manualmente' no select (O QUE É ISSO?)
@@ -44,11 +59,11 @@ module.exports = (sequelize, DataTypes) => {
 		}
 	}, 
 	{
-		tableName: 'cliente', 
+		tableName: 'Cliente', 
 		freezeTableName: true, 
 		underscored: true,
 		timestamps: false,
 	});
 
-    return Leitura;
+    return Cliente;
 };

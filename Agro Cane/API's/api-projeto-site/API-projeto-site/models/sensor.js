@@ -40,5 +40,5 @@ module.exports = (sequelize, DataTypes) => {
 		timestamps: false,
 	});
 
-    return Leitura;
+    return Sensor;
 };

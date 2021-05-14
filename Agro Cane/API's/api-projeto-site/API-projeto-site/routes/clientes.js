@@ -9,7 +9,7 @@ let sessoes = [];
 router.post('/autenticar', function(req, res, next) {
 	console.log('Recuperando usuário por email e senha');
 
-	var email_backend = req.body.email; // depois de .body, use o nome (name) do campo em seu formulário de email
+	var email = req.body.email; // depois de .body, use o nome (name) do campo em seu formulário de email
 	var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de email	
 	
 	let instrucaoSql = `select * from Cliente where email='${email}' and senha='${senha}'`;

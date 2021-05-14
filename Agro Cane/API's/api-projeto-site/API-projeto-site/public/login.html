@@ -70,7 +70,7 @@
 
 
                 <form id="form_login" method="post" onsubmit="return entrar()">
-                    <input type="text" class="input" name="email" placeholder="USUÁRIO">
+                    <input type="text" class="input" name="email" placeholder="EMAIL">
                     <br>
                     <input type="password" class="input" name="senha" placeholder="SENHA">
                     <br>
@@ -83,26 +83,18 @@
                         <img style="display: none;" src="img/aguarde.gif" id="img_aguarde">
                         <!--style="display: none;"-->
                     </div>
-
-<<<<<<< HEAD
-                    <img src="aguarde-orange.gif" id="img_aguarde">
-                    <!--style="display: none;"-->
-
-                </div>
-=======
                     <div class="contact_us">
                         <a href="AgroCane_Contact.html">
                             Contato
                         </a>
                     </div>
 
-                    <button class="bt_register" onclick="login()"><a id="efetuarlogin"> Entrar </a></button><br>
+                    <button class="bt_register" onclick="entrar()"><a id="efetuarlogin"> Entrar </a></button><br>
                 </form>
 
                 <button class="bt_register"><a href="cadastro.html"> Cadastre-se </a></button><br>
                 <br>
                 <img src="img/Logo_Folha.PNG" alt="Logo" class="logo">
->>>>>>> b617b97fef0c437b211590881717f57b3027ed92
             </div>
         </div>
     </div>
@@ -131,8 +123,8 @@
 
                 resposta.json().then(json => {
 
-                    sessionStorage.login_usuario_meuapp = json.login;
-                    sessionStorage.nome_usuario_meuapp = json.nome;
+                    sessionStorage.login_usuario_meuapp = json.email;
+                    sessionStorage.nome_usuario_meuapp = json.nomeEmpresa;
 
                     window.location.href = 'tempo-real.html';
                 });

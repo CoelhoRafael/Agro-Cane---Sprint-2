@@ -70,7 +70,7 @@
 
 
                 <form id="form_login" method="post" onsubmit="return entrar()">
-                    <input type="text" class="input" name="login" placeholder="USUÁRIO">
+                    <input type="text" class="input" name="login" placeholder="EMAIL">
                     <br>
                     <input type="password" class="input" name="senha" placeholder="SENHA" >
                     <br>
@@ -88,8 +88,9 @@
                             Contato
                         </a>
                     </div>
-
-                    <button class="bt_register" onclick="login()"><a id="efetuarlogin"> Entrar </a></button><br>
+                    <button id="btn_entrar" class="bt_register">Entrar</button>
+<!--idbt efetuarlogin***************************** -->
+                    <!-- <button class="" onclick="login()"><a id=""> Entrar </a></button><br> -->
                 </form>
 
                 <button class="bt_register"><a href="cadastro.html"> Cadastre-se </a></button><br>
@@ -114,7 +115,7 @@
     function entrar() {
         aguardar();
         var formulario = new URLSearchParams(new FormData(form_login));
-        fetch("/usuarios/autenticar", {
+        fetch("/clientes/autenticar", {
             method: "POST",
             body: formulario
         }).then(resposta => {

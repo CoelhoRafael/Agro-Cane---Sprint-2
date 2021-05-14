@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var sequelize = require('../models').sequelize;
-// var Leitura = require('../models').Leitura;
+//var Leitura = require('../models').Leitura;
 var env = process.env.NODE_ENV || 'development';
 
 const { ArduinoDataTemp } = require("../app-sensores/newserial");
@@ -22,11 +22,11 @@ router.get("/sendData", (request, response) => {
 		// Na variável abaixo, coloque o Insert que será executado no Workbench
 		// salvo exceções, é igual a SQL Server
 
-		instrucaoSql = `INSERT into leitura (temperatura, umidade, momento, fkcaminhao)
-		values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
-		(${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
-		(${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
-		(${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
+		instrucaoSql = `INSERT into dadoSensor (temperatura, umidade, dataDado)
+		values (${temperature + 10}, ${Humidity + 20}, '${agora()}'),
+		(${temperature - 10}, ${Humidity + 20}, '${agora()}'),
+		(${temperature + 5}, ${Humidity - 20}, '${agora()}'),
+		(${temperature - 5}, ${Humidity - 20}, '${agora()}');`;
 	} else {
 
 		// Na variável abaixo, coloque o Insert que será executado no SQL Server
