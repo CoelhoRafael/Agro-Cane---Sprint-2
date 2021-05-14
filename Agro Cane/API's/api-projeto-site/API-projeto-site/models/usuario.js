@@ -50,7 +50,7 @@ module.exports = (sequelize, DataTypes) => {
 		},
 		nome: {
 			field: 'nomeUsuario',
-			type: DataTypes.STRING(80), /*VERIFICAR*/
+			type: DataTypes.STRING(45), /*VERIFICAR*/
 			allowNull: false
 		}
 	}, 

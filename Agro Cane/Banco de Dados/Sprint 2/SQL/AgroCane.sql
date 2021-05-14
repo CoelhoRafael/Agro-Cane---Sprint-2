@@ -3,7 +3,10 @@ use AgroCane;
 
 create table Cliente (
 idCliente int primary key auto_increment,
-nome varchar(100),
+nomeEmpresa varchar(100),
+nomeResp varchar(75),
+email varchar(60),
+senha varchar(20),
 estado varchar(30),
 cnpj char(14),
 hectares int,
@@ -65,6 +68,8 @@ fkSensor int,
 foreign key (fkSensor) references Sensor (idSensor)
 ) auto_increment = 9000;
 
+select * from dadoSensor where idDado > 9025;
+
 insert into dadoSensor values
 (Null, "25.0", "51", "2021-04-19 12:00", "5000"),
 (Null, "23.3", "48", "2021-04-19 12:00", "5001"),
@@ -102,6 +107,7 @@ telComercial char(10),
 estado char(2),
 CEP char(9),
 fkCliente int,
+nomeUsuario varchar(45),
 foreign key (fkCliente) references Cliente (idCliente)
 ) auto_increment = 12000;
 
@@ -137,5 +143,8 @@ start transaction;
 alter table Usuario add column nomeUsuario varchar(75);
 
 commit;
+
+desc Cliente;
+desc Usuario;
 
 
