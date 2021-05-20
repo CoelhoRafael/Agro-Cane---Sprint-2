@@ -6,6 +6,7 @@ var Cliente = require('../models').Cliente;
 let sessoes = [];
 
 /* Recuperar usuário por email e senha */
+
 router.post('/autenticar', function(req, res, next) {
 	console.log('Recuperando usuário por email e senha');
 

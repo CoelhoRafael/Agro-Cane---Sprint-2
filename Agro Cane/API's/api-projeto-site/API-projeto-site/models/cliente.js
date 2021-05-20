@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
-		},	
+		},
 		nomeEmpresa: {
 			field: 'nomeEmpresa',
 			type: DataTypes.STRING(100), 

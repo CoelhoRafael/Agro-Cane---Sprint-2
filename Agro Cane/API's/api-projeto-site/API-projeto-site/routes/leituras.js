@@ -38,7 +38,7 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 		where fkcaminhao = ${idcaminhao}
 		order by id desc`;
 	} else {
-		console.log("\n\n\n\nVERIFIQUE O VALOR DE LINHA 1 EM APP.JS!\n\n\n\n")
+		console.log("\n\n\n\nproduction\n\n\n\n")
 	}
 	
 	sequelize.query(instrucaoSql, {
