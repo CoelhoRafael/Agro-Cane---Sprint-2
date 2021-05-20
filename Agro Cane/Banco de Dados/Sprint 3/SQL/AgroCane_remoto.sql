@@ -10,6 +10,16 @@ create table Cliente (
     qntSensores INT
 );
 
-select * from Cliente;
+create table dadoSensor (
+    idDado int identity,
+    temperatura float,
+    umidade float,
+    dataDado DATE,
+    momento_grafico TIME
+);
 
-Select * From INFORMATION_SCHEMA.COLUMNS Where TABLE_NAME = 'Cliente';
+select * from Cliente;
+select * from leitura;
+select * from usuario;
+
+Select * From INFORMATION_SCHEMA.COLUMNS Where TABLE_NAME = 'leitura';
