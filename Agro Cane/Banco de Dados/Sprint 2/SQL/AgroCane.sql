@@ -1,6 +1,9 @@
 create database AgroCane;
 use AgroCane;
 
+
+
+
 create table Cliente (
 idCliente int primary key auto_increment,
 nomeEmpresa varchar(100),
