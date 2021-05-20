@@ -24,7 +24,7 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 		umidade, 
 		momento,
 		DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
-		from dadoSensor
+		from leitura
 		where fkcaminhao = ${idcaminhao}
 		order by id desc limit ${limite_linhas}`;
 	} else if (env == 'production') {
@@ -58,7 +58,7 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 router.get('/tempo-real/:idcaminhao', function(req, res, next) {
 	console.log('Recuperando caminhões');
 	
-	var idcaminhao = req.body.idcaminhao; // depois de .body, use o nome (name) do campo em seu formulário de login
+	//var idcaminhao = req.body.idcaminhao; // depois de .body, use o nome (name) do campo em seu formulário de login
 	var idcaminhao = req.params.idcaminhao;
 	
 	let instrucaoSql = "";
