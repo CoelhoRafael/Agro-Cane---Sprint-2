@@ -19,6 +19,7 @@ body {
     position: fixed;
 }
 
+
 h1 {
     margin: 0;
     padding: 0;
@@ -36,11 +37,17 @@ a {
 .img_header {
     height: 100px;
     margin-left: 1%;
-    margin: auto;
+    margin: auto;  
+    
+}
+.leo_titulo{
+color: #e7e6a0;
 }
 
 .highlight {
     text-transform: uppercase;
+    color: #e7e6a0;
+
 }
 
 .gui_conteudo {
@@ -67,8 +74,17 @@ a {
     text-align: center;
 }
 
+.leo_meio{
+    height: 100vh;
+}
 
 
+#img_meio{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+}
 
 
 
