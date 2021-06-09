@@ -18,7 +18,7 @@
     <div class="header">
         <div class="header_img">
 
-            <img class="img_header" src="img/usuario_perfil.png" alt="" srcset="">
+            <img class="img_header" src="img/usuario_perfil.png" alt="Ícone de usuário">
 
 
             <h3 class="leo_titulo">Olá, <b class="highlight" id="nomeResp"></b> </h3>
@@ -42,7 +42,7 @@
 
         <div class="leo_botaozinho">
 
-           <a href="login.html" onclick="logoff()"><img src="img/botaozinho.png" alt="sair" ></a> 
+            <a href="login.html" onclick="logoff()"><img src="img/botaozinho.png" alt="sair"></a>
 
         </div>
 
@@ -61,6 +61,38 @@
         <center>
 
             <div class="leo_caixameio">
+
+                <div class="gui_informacao">
+                    <h3>XX% da sua plantação está XXXXXXXX</h3>
+                </div>
+
+                <div class="gui_grafico_fora">
+                    <div class="gui_grafico_torta">
+                        <!-- AQUI FICA O GRÁFICO EM PIE! -->
+                        <!-- AQUI FICA O GRÁFICO EM PIE! -->
+                        <!-- AQUI FICA O GRÁFICO EM PIE! -->
+                    </div>
+                    <div class="gui_grafico_legenda">
+                        <div class="gui_cor_legenda1">Legenda</div>
+                        <div class="gui_cor_legenda2">Legenda</div>
+                    </div>
+
+                </div>
+                <span class="gui_ocorrencia_titulo">Detalhamento da Ocorrência: </span><br> <br>
+                <div class="gui_caixa_ocorrencia">
+                    Sensor X: <i>Situação</i> <br>
+                    Sensor Y: <i>Situação</i> <br>
+                    Sensor Z: <i>Situação</i> <br>
+                </div>
+
+                <div class="gui_seleciona">
+                    <select id="sel_seleciona_sensor">
+                        <option value="">SELECIONE UM SENSOR</option>
+                        <option value="">X</option>
+                        <option value="">Y</option>
+                        <option value="">Z</option>
+                    </select>
+                </div>
 
             </div>
 
@@ -89,34 +121,34 @@
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
-    
+
 
     function obterdadosporcaminhao(idcaminhao) {
         //aguardar();
         fetch(`/leituras/tempo-real/${idcaminhao}`)
-        .then(resposta => {
+            .then(resposta => {
 
-            if (resposta.ok) {
-                resposta.json().then(function (resposta) {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
 
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    // aqui, após registro. use os nomes
-                    // dos atributos que vem no JSON
-                    var dados = {
-                        temperatura: resposta.temperatura,
-                        umidade: resposta.umidade
-                    }
+                        // aqui, após registro. use os nomes
+                        // dos atributos que vem no JSON
+                        var dados = {
+                            temperatura: resposta.temperatura,
+                            umidade: resposta.umidade
+                        }
 
-                    alertar(resposta.temperatura, resposta.umidade, idcaminhao);
-                    atualizarTela(dados, idcaminhao);
-                });
-            } else {
+                        alertar(resposta.temperatura, resposta.umidade, idcaminhao);
+                        atualizarTela(dados, idcaminhao);
+                    });
+                } else {
 
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
-        .catch(function (error) {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
                 console.error(`Erro na obtenção dos dados do caminhao p/ gráfico: ${error.message}`);
             });
     }
@@ -206,7 +238,7 @@
 
         div_umidade_alterar.innerHTML = `Umidade: ${dados.umidade}%`;
 
-        
+
 
     }
 
