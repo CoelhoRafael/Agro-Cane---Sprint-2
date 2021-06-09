@@ -121,9 +121,12 @@ color: #e7e6a0;
 } */
 
 .leo_caixameio{
-    height: 100px;
-    width: 10%;
-    background-color: black;
+    margin-top: 1%;
+    height: 560px;
+    width: 40%;
+    margin-left: 15%;
+    background-color: #33333393;
+    border-radius: 3%;
 }
 
 
