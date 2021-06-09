@@ -14,7 +14,7 @@ body {
 .header {
     background-color: #55a44e;
     border-right: 5px solid #e7e6a0;
-    width: 17.5%;
+    width: 16.5%;
     height: 100%;
     position: fixed;
 }
@@ -44,6 +44,12 @@ a {
 color: #e7e6a0;
 }
 
+#platinha{
+    margin: 0;
+    margin-bottom: 41px;
+    margin-top: -20px;
+}
+
 .highlight {
     text-transform: uppercase;
     color: #e7e6a0;
@@ -52,22 +58,46 @@ color: #e7e6a0;
 
 .gui_conteudo {
     text-align: center;
-    background-color: tomato;
+    /* background-color: tomato; */
     width: 86%;
     margin: auto;
     font-size: 17.5px;
-    padding-bottom: 55%;
+    padding-bottom: 35%;
 }
 
 .gui_conteudo_titulo {
     font-size: 23px;
     font-weight: bold;
+    
 }
 
+#leo_agro{
+    color: #006301;
+}
 
+#leo_cane{
+    color: #e7e6a0;
+}
+
+.gui_barrinha{
+    margin: 0;
+    /* text-align: center; */
+    margin-left: 14px;
+    height: 6px;
+    width: 165px;
+    border-radius: 100px;
+    background-color: #006301;
+}
 
 .gui_destaque {
     font-weight: bold;
+    color: #006301;
+    font-size: 21px;
+}
+
+.leo_creme{
+    color: #e7e6a0;
+    font-size: 21px;
 }
 
 .leo_botaozinho{
