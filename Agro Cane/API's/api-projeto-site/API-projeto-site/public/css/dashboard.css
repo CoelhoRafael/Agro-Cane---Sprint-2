@@ -106,7 +106,7 @@ color: #e7e6a0;
 
 .leo_meio{
     height: 100vh;
-    background-image: url(img/img-fundo.jpg);
+    background-image: url(../img/img-fundo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }

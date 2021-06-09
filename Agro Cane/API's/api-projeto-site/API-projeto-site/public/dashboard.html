@@ -7,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/dashboard.css">
     <title>Document</title>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+
 </head>
 
-<body>
+<body onload="atualizacaoPeriodica()">
     <div class="header">
         <div class="header_img">
 
@@ -37,7 +42,7 @@
 
         <div class="leo_botaozinho">
 
-           <a href="#" onclick="logoff()"><img src="img/botaozinho.png" ></a> 
+           <a href="login.html" onclick="logoff()"><img src="img/botaozinho.png" alt="sair" ></a> 
 
         </div>
 
