@@ -106,16 +106,25 @@ color: #e7e6a0;
 
 .leo_meio{
     height: 100vh;
+    background-image: url(img/img-fundo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 
-#img_meio{
-    background-repeat: no-repeat;
+/* #img_meio{
+  background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    width: 100%;
-}
+    width: 100%; 
+    height: auto;
+} */
 
+.leo_caixameio{
+    height: 100px;
+    width: 10%;
+    background-color: black;
+}
 
 
 
