@@ -1,0 +1,128 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+        background-color: #ecf0f1;
+}
+
+.container {
+    width: 92%;
+    background-color: red;
+    margin: auto;
+}
+
+.header {
+    background-color: #55a44e;
+    border-right: 5px solid #e7e6a0;
+    width: 17.5%;
+    height: 100%;
+    position: fixed;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header_img {
+    margin-top: 15%;
+    text-align: center;
+}
+
+.img_header {
+    height: 100px;
+    margin-left: 1%;
+    margin: auto;
+}
+
+.highlight {
+    text-transform: uppercase;
+}
+
+.gui_conteudo {
+    text-align: center;
+    background-color: tomato;
+    width: 86%;
+    margin: auto;
+    font-size: 17.5px;
+    padding-bottom: 55%;
+}
+
+.gui_conteudo_titulo {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+
+
+.gui_destaque {
+    font-weight: bold;
+}
+
+.leo_botaozinho{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+/* 
+.footer {
+    background-color: rgb(255, 95, 37);
+    text-align: center;
+    height: 100px;
+}
+
+.footer h4 {
+    color: white;
+    font-weight: 100;
+    margin: 0;
+    padding-top: 40px;
+} */
+
