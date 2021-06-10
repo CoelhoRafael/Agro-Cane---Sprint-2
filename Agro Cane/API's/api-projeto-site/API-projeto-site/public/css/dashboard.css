@@ -1,0 +1,237 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+    background-color: #ecf0f1;
+}
+
+.container {
+    width: 92%;
+    background-color: red;
+    margin: auto;
+}
+
+.header {
+    background-color: #55a44e;
+    border-right: 5px solid #e7e6a0;
+    width: 16.5%;
+    height: 100%;
+    position: fixed;
+}
+
+
+h1 {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.header_img {
+    margin-top: 15%;
+    text-align: center;
+}
+
+.img_header {
+    height: 100px;
+    margin-left: 1%;
+    margin: auto;  
+    
+}
+.leo_titulo{
+color: #e7e6a0;
+}
+
+#platinha{
+    margin: 0;
+    margin-bottom: 41px;
+    margin-top: -20px;
+}
+
+.highlight {
+    text-transform: uppercase;
+    color: #e7e6a0;
+
+}
+
+.gui_conteudo {
+    text-align: center;
+    /* background-color: tomato; */
+    width: 86%;
+    margin: auto;
+    font-size: 17.5px;
+    padding-bottom: 35%;
+}
+
+.gui_conteudo_titulo {
+    font-size: 23px;
+    font-weight: bold;
+    
+}
+
+#leo_agro{
+    color: #006301;
+}
+
+#leo_cane{
+    color: #e7e6a0;
+}
+
+.gui_barrinha{
+    margin: 0;
+    /* text-align: center; */
+    margin-left: 14px;
+    height: 6px;
+    width: 165px;
+    border-radius: 100px;
+    background-color: #006301;
+}
+
+.gui_destaque {
+    font-weight: bold;
+    color: #006301;
+    font-size: 21px;
+}
+
+.leo_creme{
+    color: #e7e6a0;
+    font-size: 21px;
+}
+
+.leo_botaozinho{
+    text-align: center;
+}
+
+.leo_meio{
+    height: 100vh;
+    background-image: url(../img/img-fundo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+/* #img_meio{
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%; 
+    height: auto;
+} */
+
+.leo_caixameio{
+    margin-top: 10px;
+    height: 700px;
+    width: 40%;
+    margin-left: 15%;
+    background-color: #33333393;
+    border-radius: 3%;
+}
+.gui_informacao {
+    background-color: darkgreen;
+    padding: 2% 0 2% 0;
+    width: 80%;
+}
+
+.gui_grafico_fora {
+    background-color: yellow;
+    height: 275px;
+    margin-bottom: 3.5%;
+}
+
+.gui_grafico_torta {
+    background-color: red;
+    height: 275px;
+    width: 275px;
+    float: left;
+    margin-left: 5%;
+}
+
+.gui_grafico_legenda {
+    background-color: purple;
+    height: 275px;
+    float: right;
+    width: 200px;
+    margin-right: 5%;
+}
+.gui_cor_legenda1 {
+    background-color: pink;
+    height: 20px;
+    width: 87px;
+    /* margin-right: 50%; */
+    margin-top: 100%;
+}
+
+.gui_cor_legenda2 {
+    background-color: tomato;
+    height: 20px;
+    width: 87px;
+    /* margin-right: 50%; */
+    margin-top: 7.5%;
+}
+
+.gui_caixa_ocorrencia {
+    background-color: #e7e6a0;
+    width: 70%;
+    height: 60px;
+    padding: 2% 0 2% 0;
+    font-size: 20px;
+}
+.gui_ocorrencia_titulo {
+    color: white;
+    font-size: 23px;
+    /* font-weight: bold; */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER */
+/* 
+.footer {
+    background-color: rgb(255, 95, 37);
+    text-align: center;
+    height: 100px;
+}
+
+.footer h4 {
+    color: white;
+    font-weight: 100;
+    margin: 0;
+    padding-top: 40px;
+} */
+

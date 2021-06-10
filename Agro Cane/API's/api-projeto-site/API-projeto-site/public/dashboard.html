@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <title>Document</title>
+
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+
+</head>
+
+<body onload="atualizacaoPeriodica()">
+    <div class="header">
+        <div class="header_img">
+
+            <img class="img_header" src="img/usuario_perfil.png" alt="Ícone de usuário">
+
+
+            <h3 class="leo_titulo">Olá, <b class="highlight" id="nomeResp"></b> </h3>
+            <img id="platinha" src="img/plantinha.png" alt="" srcset="">
+
+
+        </div>
+
+        <div class="gui_conteudo">
+            <div class="gui_conteudo_titulo"><span id="leo_agro">Agro</span> <span id="leo_cane">Cane</span></div> <br>
+
+            <p class="gui_barrinha"></p> <br>
+
+            <span class="leo_creme">Sempre ajudando
+                sua </span><span class="gui_destaque">empresa</span><span class="leo_creme"> na
+                detecção de </span><span class="gui_destaque">riscos</span>
+            <span class="leo_creme">e tomada de</span>
+            <span class="gui_destaque">decisão.</span>
+
+        </div>
+
+        <div class="leo_botaozinho">
+
+            <a href="login.html" onclick="logoff()"><img src="img/botaozinho.png" alt="sair"></a>
+
+        </div>
+
+
+    </div>
+
+    <div class="leo_meio">
+
+        <div class="leo_meioimg">
+
+
+        </div>
+
+        <br>
+
+        <center>
+
+            <div class="leo_caixameio">
+
+                <div class="gui_informacao">
+                    <h3>XX% da sua plantação está XXXXXXXX</h3>
+                </div>
+
+                <div class="gui_grafico_fora">
+                    <div class="gui_grafico_torta">
+                        <!-- AQUI FICA O GRÁFICO EM PIE! -->
+                        <!-- AQUI FICA O GRÁFICO EM PIE! -->
+                        <!-- AQUI FICA O GRÁFICO EM PIE! -->
+                    </div>
+                    <div class="gui_grafico_legenda">
+                        <div class="gui_cor_legenda1">Legenda</div>
+                        <div class="gui_cor_legenda2">Legenda</div>
+                    </div>
+
+                </div>
+                <span class="gui_ocorrencia_titulo">Detalhamento da Ocorrência: </span><br> <br>
+                <div class="gui_caixa_ocorrencia">
+                    Sensor X: <i>Situação</i> <br>
+                    Sensor Y: <i>Situação</i> <br>
+                    Sensor Z: <i>Situação</i> <br>
+                </div>
+
+                <div class="gui_seleciona">
+                    <select id="sel_seleciona_sensor">
+                        <option value="">SELECIONE UM SENSOR</option>
+                        <option value="">X</option>
+                        <option value="">Y</option>
+                        <option value="">Z</option>
+                    </select>
+                </div>
+
+            </div>
+
+        </center>
+
+
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    let usuario;
+
+    verificar_autenticacao();
+
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
+    function atualizacaoPeriodica() {
+        obterdadosporcaminhao(1);
+        obterdadosporcaminhao(2);
+        obterdadosporcaminhao(3);
+        obterdadosporcaminhao(4);
+        setTimeout(atualizacaoPeriodica, 5000);
+    }
+
+
+
+    function obterdadosporcaminhao(idcaminhao) {
+        //aguardar();
+        fetch(`/leituras/tempo-real/${idcaminhao}`)
+            .then(resposta => {
+
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+                        // aqui, após registro. use os nomes
+                        // dos atributos que vem no JSON
+                        var dados = {
+                            temperatura: resposta.temperatura,
+                            umidade: resposta.umidade
+                        }
+
+                        alertar(resposta.temperatura, resposta.umidade, idcaminhao);
+                        atualizarTela(dados, idcaminhao);
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do caminhao p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function alertar(temperatura, umidade, idcaminhao) {
+        // padrão para meu alerta
+        var limites = {
+            max_temperatura: 40,
+            min_temperatura: 20,
+            max_umidade: 80,
+            min_umidade: 50,
+        };
+
+        // zerar aviso de mensagem
+        var mensagem_temperatura = '';
+        var mensagem_umidade = '';
+        var classe_temperatura = 'alerta';
+        var classe_umidade = 'alerta_umidd';
+
+        // comparando
+        if (temperatura > limites.max_temperatura) {
+            mensagem_temperatura += 'Temperatura alta demais! <br>';
+            classe_temperatura = 'alerta alerta-alto';
+        }
+        if (umidade > limites.max_umidade) {
+            mensagem_umidade += 'Umidade alta demais! <br>';
+            classe_umidade = 'alerta_umidd alerta-alto';
+        }
+        if (temperatura < limites.min_temperatura) {
+            mensagem_temperatura = 'Temperatura baixa demais! <br>';
+            classe_temperatura = 'alerta alerta-baixo';
+        }
+        if (umidade < limites.min_umidade) {
+            mensagem_umidade = 'Umidade baixa demais! <br>';
+            classe_umidade = 'alerta_umidd alerta-baixo';
+        }
+
+        // escolhendo qual alterar
+        var div_temperatura_alterar
+        var div_umidade_alterar
+
+        if (idcaminhao == 1) {
+            div_temperatura_alterar = div_alerta_temperatura
+            div_umidade_alterar = div_alerta_umidade
+        } else if (idcaminhao == 2) {
+            div_temperatura_alterar = div_alerta_temperatura2
+            div_umidade_alterar = div_alerta_umidade2
+        } else if (idcaminhao == 3) {
+            div_temperatura_alterar = div_alerta_temperatura3
+            div_umidade_alterar = div_alerta_umidade3
+        } else if (idcaminhao == 4) {
+            div_temperatura_alterar = div_alerta_temperatura4
+            div_umidade_alterar = div_alerta_umidade4
+        }
+
+        // alterando
+        div_temperatura_alterar.innerHTML = mensagem_temperatura;
+        div_temperatura_alterar.className = classe_temperatura;
+
+        div_umidade_alterar.innerHTML = mensagem_umidade;
+        div_umidade_alterar.className = classe_umidade;
+    }
+
+    // só altere aqui se souber o que está fazendo!
+    function atualizarTela(dados, idcaminhao) {
+        console.log('iniciando atualização da tela...');
+
+        // escolhendo qual alterar
+        var div_temperatura_alterar
+        var div_umidade_alterar
+
+        if (idcaminhao == 1) {
+            div_temperatura_alterar = div_temperatura
+            div_umidade_alterar = div_umidade
+        } else if (idcaminhao == 2) {
+            div_temperatura_alterar = div_temperatura2
+            div_umidade_alterar = div_umidade2
+        } else if (idcaminhao == 3) {
+            div_temperatura_alterar = div_temperatura3
+            div_umidade_alterar = div_umidade3
+        } else if (idcaminhao == 4) {
+            div_temperatura_alterar = div_temperatura4
+            div_umidade_alterar = div_umidade4
+        }
+
+        div_temperatura_alterar.innerHTML = `Temperatura: ${dados.temperatura}º`;
+
+        div_umidade_alterar.innerHTML = `Umidade: ${dados.umidade}%`;
+
+
+
+    }
+
+
+    function sendData() {
+        var http = new XMLHttpRequest();
+        http.open('GET', 'http://localhost:9001/api/sendData', false);
+        http.send(null);
+    }
+
+    // Descomente abaixo se quiser inserir dados a cada X segundos  
+    setInterval(() => {
+        sendData();
+    }, 5000);
+
+</script>
