@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cadastro.css">
+
+<body>
+
+    <header  class="cabeca">
+        <h1><img src="./imagens/logo.png" alt="imagem do logo de Rick and Morty"></h1>
+        
+        <ul class="lista">
+            <li><a href="index.html">História</a></li>
+            <li><a href="curiosidades.html">Curiosidades</a></li>
+            <li><a href="personagens.html">Personagens</a></li>
+            <li><a href="duvidas.html">Duvidas</a></li>
+            <li><a href="#" class="login">Login</a></li>
+
+        </ul>
+    </header>
+     
+ <div class="body1">
+        <div class="container">
+            <div class="box-login">
+                <div class="formulario">
+                <h1>Cadastro</h1>
+                <br>
+                <form id="form_cadastro" method="post" onsubmit="return cadastrar()">
+                    <input id="user" class="input" placeholder="Nome do Usuário" type="text" name="login"><br>
+                    <input id="email" class="input" placeholder="Insira seu E-mail" type="text" name="email"><br>
+                    <input id="pass" class="input" placeholder="Escreva sua Senha" type="password" name="password"><br>
+                    <input id="confirm_pass" class="input" placeholder="Reescreva sua Senha" type="password" name="confirm_password"><br>
+                    <div id="result"></div>
+                    <img src="./imagens/PiclesRick2.png" alt="Logo" class="logo"> <br>
+
+                    <input type="submit" id="btn_entrar" value="Cadastrar" class="bt_register">
+
+                </form>
+              </div>
+            </div>
+        </div>
+    </div>
+
+
+   <footer class="pe">
+    <a href="https://www.instagram.com/juvicius/"><img src="./imagens/logo.png" alt="imagem do logo de Rick and Morty"></a>
+</footer>
+</body>
+</html>
+<script>
+
+    function cadastrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_cadastro));
+        fetch("/usuarios/cadastrar", {
+            method: "POST",
+            body: formulario
+        }).then(function (response) {
+
+            if (response.ok) {
+
+                window.location.href = 'login.html';
+
+            } else {
+
+                console.log('Erro de cadastro!');
+                response.text().then(function (resposta) {
+                    div_erro.innerHTML = resposta;
+                });
+                finalizar_aguardar();
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.display = 'inline';
+        div_erro.style.display = 'none';
+    }
+
+    function finalizar_aguardar() {
+        btn_entrar.disabled = false;
+        img_aguarde.style.display = 'none';
+        div_erro.style.display = 'block';
+    }
+
+</script>
