@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="login.css">
+
+<body>
+
+    <header  class="cabeca">
+        <h1><img src="./imagens/logo.png" alt="imagem do logo de Rick and Morty"></h1>
+        
+        <ul class="lista">
+            <li><a href="index.html">História</a></li>
+            <li><a href="curiosidades.html">Curiosidades</a></li>
+            <li><a href="personagens.html">Personagens</a></li>
+            <li><a href="duvidas.html">Duvidas</a></li>
+            <li><a href="#" class="login">Login</a></li>
+
+        </ul>
+    </header>
+    <div class="pag-login">
+        <div class="container">
+            <div class="box-login">
+                <h1>Login</h1>
+
+                <form id="form_login" method="post" onsubmit="return entrar()">
+                    <input type="text" class="input-padrao" name="login" placeholder="Nome do Usuário">
+
+                    <input type="password" class="input-padrao" name="senha" placeholder="Escreva sua Senha"><br>
+
+                    <img src="./imagens/PiclesRick2.png" id="img_aguarde"  > <br><!--style="display: none;"-->
+
+                    <button id="btn_entrar" class="btn-green">Entrar</button>
+                    <a href="cadastro.html" id="btn_entrar" class="btn-green"><button  >Personagens</button></a>
+                </form>
+
+                <div class="extra">
+                    <div id="div_erro" class="msg_erro">
+                    </div>
+
+                  
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--footer inicio-->
+    <div class="footer">
+        <footer class="pe">
+            <a href="https://www.instagram.com/juvicius/"><img src="./imagens/logo.png" alt="imagem do logo de Rick and Morty"></a>
+        </footer>
+    </div>
+    <!--footer fim-->
+
+</body>
+
+</html>
+<script>
+
+    function entrar() {
+        aguardar();
+        var formulario = new URLSearchParams(new FormData(form_login));
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            body: formulario
+        }).then(resposta => {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+
+                    sessionStorage.login_usuario_meuapp = json.login;
+                    sessionStorage.nome_usuario_meuapp = json.nome;
+
+                    window.location.href = 'tempo-real.html';
+                });
+
+            } else {
+
+                console.log('Erro de login!');
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizar_aguardar(texto);
+                });
+            }
+        });
+
+        return false;
+    }
+
+    function aguardar() {
+        btn_entrar.disabled = true;
+        img_aguarde.style.visibility = 'visible';
+        div_erro.style.visibility = 'hidden';
+    }
+
+    function finalizar_aguardar(resposta) {
+        btn_entrar.disabled = false;
+        img_aguarde.style.visibility = 'hidden';
+        div_erro.style.visibility = 'visible';
+        div_erro.innerHTML = resposta;
+    }
+
+</script>
