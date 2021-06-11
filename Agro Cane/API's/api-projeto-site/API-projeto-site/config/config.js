@@ -1,5 +1,4 @@
 module.exports = {
-<<<<<<< HEAD
     // Insira aqui seus dados do banco NA NUVEM AZURE
     production: {
         // altere APENAS username, password, database e host.
@@ -45,7 +44,7 @@ module.exports = {
             connectTimeout: 5000
         }
     },
-=======
+
   // Insira aqui seus dados do banco NA NUVEM AZURE
   production: {
     // altere APENAS username, password, database e host.
@@ -72,15 +71,9 @@ module.exports = {
   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
   dev: {
     // altere APENAS username, password e database.
-<<<<<<< HEAD
-    username: 'agrocane',
-    password: 'agrocane',
-    database: 'agrocane',
-=======
-    username: 'XXXXXXX',
-    password: 'XXXXXXX',
-    database: 'XXXXXXX',
->>>>>>> 81a8abdc66f64f4f04bf1da1b1468b6d22be623b
+    username: 'xxx',
+    password: 'xxx',
+    database: 'xxx',
     host: 'localhost',
     dialect: 'mysql',
     xuse_env_variable: 'DATABASE_URL',
@@ -97,5 +90,4 @@ module.exports = {
       connectTimeout: 5000
     }
   },
->>>>>>> 238cc6fc1c4681db25c529403be6b8a7270cc9d0
 };
