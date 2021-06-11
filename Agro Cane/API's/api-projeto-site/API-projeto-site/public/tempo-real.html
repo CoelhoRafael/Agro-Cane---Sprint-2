@@ -95,7 +95,9 @@
             </div>
 
             <div class="caminhao">
+
                 <h4>Caminhão <span name="namecaminhao" id="idcaminhao" value="4">4</span></h4>
+
                 <div class="valores">
                     <div class="valor" id="div_temperatura4">Temperatura sendo obtida...</div>
                     <div class="valor" id="div_umidade4">Umidade sendo obtida...</div>
@@ -105,14 +107,12 @@
                     <div class="alerta" id="div_alerta_temperatura4"></div>
                     <div class="alerta_umidd" id="div_alerta_umidade4"></div>
                 </div>
+
             </div>
 
-
-
         </div>
+
     </div>
-
-
 
 </body>
 
@@ -132,8 +132,6 @@
         obterdadosporcaminhao(4);
         setTimeout(atualizacaoPeriodica, 5000);
     }
-
-    
 
     function obterdadosporcaminhao(idcaminhao) {
         //aguardar();
@@ -264,6 +262,8 @@
     // Descomente abaixo se quiser inserir dados a cada X segundos  
     setInterval(() => {
         sendData();
-    }, 5000);
+    }, 1000);
+
+    // 3600000 == 1 hora!
 
 </script>

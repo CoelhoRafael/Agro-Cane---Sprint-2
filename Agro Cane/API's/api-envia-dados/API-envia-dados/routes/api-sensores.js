@@ -6,11 +6,11 @@ var env = process.env.NODE_ENV || 'development';
 
 const { ArduinoDataTemp } = require("../app-sensores/newserial");
 const { ArduinoDataHumidity } = require("../app-sensores/serialHumidity");
-
 const { ArduinoDataSwitch } = require("../app-sensores/serialSwitch");
 const { ArduinoDataLuminosity } = require("../app-sensores/serialLuminosidity");
 
 router.get("/sendData", (request, response) => {
+
 	const temperature = ArduinoDataTemp.List[ArduinoDataTemp.List.length - 1];
 	const Humidity = ArduinoDataHumidity.List[ArduinoDataHumidity.List.length - 1];
 	//luminosidade = ArduinoDataLuminosity.List[ArduinoDataLuminosity.List.length -1]
@@ -27,17 +27,19 @@ router.get("/sendData", (request, response) => {
 		(${temperature - 10}, ${Humidity + 20}, '${agora()}'),
 		(${temperature + 5}, ${Humidity - 20}, '${agora()}'),
 		(${temperature - 5}, ${Humidity - 20}, '${agora()}');`;
-	} else {
-
-		// Na variável abaixo, coloque o Insert que será executado no SQL Server
-		// salvo exceções, é igual a Workbench
-
-		instrucaoSql = `INSERT into dbo.leitura (temperatura, umidade, momento, fkcaminhao)
-		values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
-		(${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
-		(${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
-		(${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
 	}
+	
+	// else {
+
+	// 	// Na variável abaixo, coloque o Insert que será executado no SQL Server
+	// 	// salvo exceções, é igual a Workbench
+
+	// 	instrucaoSql = `INSERT into dbo.leitura (temperatura, umidade, momento, fkcaminhao)
+	// 	values (${temperature + 10}, ${Humidity + 20}, '${agora()}', 1),
+	// 	(${temperature - 10}, ${Humidity + 20}, '${agora()}', 2),
+	// 	(${temperature + 5}, ${Humidity - 20}, '${agora()}', 3),
+	// 	(${temperature - 5}, ${Humidity - 20}, '${agora()}', 4);`;
+	// }
 
 	sequelize.query(instrucaoSql, {
 		//model: Leitura,
@@ -51,6 +53,7 @@ router.get("/sendData", (request, response) => {
 			console.error(erro);
 			response.status(500).send(erro.message);
 		});
+		
 });
 
 function agora() {

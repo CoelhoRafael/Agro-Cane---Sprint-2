@@ -16,6 +16,7 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 	console.log(`Recuperando as ultimas ${limite_linhas} leituras`);
 	
 	let instrucaoSql = "";
+	// let instrucaoSql2 = "";
 
 	if (env == 'dev') {
 		// abaixo, escreva o select de dados para o Workbench
@@ -27,6 +28,16 @@ router.get('/ultimas/:idcaminhao', function(req, res, next) {
 		from leitura
 		where fkcaminhao = ${idcaminhao}
 		order by id desc limit ${limite_linhas}`;
+
+		// instrucaoSql2 = `select 
+		// temperatura, 
+		// umidade, 
+		// momento,
+		// DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico
+		// from leitura
+		// where fkcaminhao = ${idcaminhao}
+		// order by id desc limit ${limite_linhas}`;
+
 	} else if (env == 'production') {
 		// abaixo, escreva o select de dados para o SQL Server
 		instrucaoSql = `select top ${limite_linhas} 

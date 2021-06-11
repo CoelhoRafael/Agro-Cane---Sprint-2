@@ -26,8 +26,8 @@ module.exports = {
   dev: {
     // altere APENAS username, password e database.
     username: 'Dev',
-    password: 'XXXXXXX',
-    database: 'XXXXXXX',
+    password: 'bandtec',
+    database: 'AgroCane',
     host: 'localhost',
     dialect: 'mysql',
     xuse_env_variable: 'DATABASE_URL',

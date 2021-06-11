@@ -90,7 +90,8 @@ select * from dadoSensor where idDado > 9025;
 -- (Null, "34.2", "75", "2021-04-19 13:00", "5005"),
 -- (Null, "34.2", "75", "2021-04-19 14:00", "5005");
 
-select * from dadoSensor; 
+select min(temperatura) from dadoSensor; 
+
 
 select * from Sensor inner join dadoSensor where idSensor = fkSensor;
 select idSensor, regiao, quadrante statusSensor, temperatura, umidade, dataDado from Sensor inner join dadoSensor where idSensor = fkSensor;
