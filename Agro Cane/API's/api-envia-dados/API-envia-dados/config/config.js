@@ -3,9 +3,9 @@ module.exports = {
   production: {
     // altere APENAS username, password, database e host.
     username: 'bandtec',
-    password: '#Gfgrupo9',
-    database: '211-1a-grupo9',
-    host: '2111agrupo9.database.windows.net',
+    password: 'XXXXXXX',
+    database: 'XXXXXXX',
+    host: 'XXXXXXX',
     dialect: 'mssql',
     xuse_env_variable: 'DATABASE_URL',
     dialectOptions: {
@@ -25,9 +25,15 @@ module.exports = {
   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
   dev: {
     // altere APENAS username, password e database.
+<<<<<<< HEAD
     username: 'agrocane',
     password: 'agrocane',
     database: 'agrocane',
+=======
+    username: 'Dev',
+    password: 'XXXXXXX',
+    database: 'XXXXXXX',
+>>>>>>> 81a8abdc66f64f4f04bf1da1b1468b6d22be623b
     host: 'localhost',
     dialect: 'mysql',
     xuse_env_variable: 'DATABASE_URL',
