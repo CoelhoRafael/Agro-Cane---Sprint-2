@@ -7,8 +7,9 @@ select * from dadoSensor;
 select * from sensor;
 select * from usuario;
 select * from usuario_bd;
-
-insert into areas
+desc areas;
+insert into areas values
+	(
 
 
 

@@ -13,7 +13,7 @@ module.exports = {
         encrypt: true
       }
     },
-    pool: { 
+    pool: {
       max: 5,
       min: 1,
       acquire: 5000,
@@ -25,15 +25,9 @@ module.exports = {
   // Insira aqui seus dados do banco LOCAL - MySQL Workbench
   dev: {
     // altere APENAS username, password e database.
-<<<<<<< HEAD
-    username: 'Dev',
+    username: 'Agro-Cane',
     password: 'bandtec',
-    database: 'AgroCane',
-=======
-    username: 'xxx',
-    password: 'xxx',
-    database: 'xxx',
->>>>>>> dccbcdb1c18778e94cb246d8849fd37062898ec4
+    database: 'agrocane',
     host: 'localhost',
     dialect: 'mysql',
     xuse_env_variable: 'DATABASE_URL',
@@ -42,7 +36,7 @@ module.exports = {
         encrypt: true
       }
     },
-    pool: { 
+    pool: {
       max: 5,
       min: 1,
       acquire: 5000,
@@ -51,4 +45,3 @@ module.exports = {
     }
   },
 };
- 
