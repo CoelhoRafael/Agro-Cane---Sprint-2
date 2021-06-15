@@ -123,10 +123,12 @@
 
                 resposta.json().then(json => {
 
-                    sessionStorage.login_usuario_meuapp = json.email;
-                    sessionStorage.nomeResp_meuapp = json.nomeResp;
+                    sessionStorage.idCliente_cliente_meuapp = json.idCliente;
+                    sessionStorage.login_cliente_meuapp = json.email;
+                    sessionStorage.nomeEmpresa_cliente_meuapp = json.nomeEmpresa;
 
                     window.location.href = 'dashboard.html';
+    
                 });
 
             } else {

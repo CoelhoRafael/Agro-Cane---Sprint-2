@@ -12,20 +12,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
-		},	
-		regiao: {
-			field: 'regiao',
-			type: DataTypes.STRING(20), 
-			allowNull: false
 		},
-		quadrante: {
-			field: 'quadrante',
-			type: DataTypes.INTEGER,
-			allowNull: false
-		},
-        statusSensor: {
+        tipoSensor: {
 			field: 'statusSensor',
-			type: DataTypes.STRING(20), /*CHECK*/
+			type: DataTypes.STRING, /*CHECK*/
 			allowNull: false
 		},
 		momento_grafico: {

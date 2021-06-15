@@ -43,7 +43,6 @@ router.post('/cadastrar', function(req, res, next) {
 	
 	Cliente.create({
 		nomeEmpresa : req.body.nomeEmpresa,
-		nomeResp : req.body.nomeResp,
 		email: req.body.email,
 		senha: req.body.senha,
 		estado: req.body.estado,
@@ -111,5 +110,6 @@ router.get('/', function(req, res, next) {
 		res.status(500).send(erro.message);
   	});
 });
+
 
 module.exports = router;

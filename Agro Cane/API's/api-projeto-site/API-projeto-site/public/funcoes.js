@@ -1,4 +1,5 @@
-let login_usuario;
+let id_Cliente;
+let login_cliente;
 let nome_usuario;
 
 function redirecionar_login() {
@@ -6,10 +7,12 @@ function redirecionar_login() {
 }
 
 function verificar_autenticacao() {
-    login_usuario = sessionStorage.login_usuario_meuapp;
-    nome_usuario = sessionStorage.nomeResp_meuapp;
+
+    id_Cliente = sessionStorage.idCliente_cliente_meuapp;
+    login_cliente = sessionStorage.login_cliente_meuapp;
+    nome_usuario = sessionStorage.nomeEmpresa_cliente_meuapp;
     
-    if (login_usuario == undefined)  {
+    if (login_cliente == undefined)  {
         redirecionar_login();
     } else {
         nomeResp.innerHTML = nome_usuario;
@@ -25,11 +28,12 @@ function logoff() {
 }
 
 function validar_sessao() {
-    fetch(`/usuarios/sessao/${login_usuario}`, {cache:'no-store'})
+    fetch(`/usuarios/sessao/${login_cliente}`, {cache:'no-store'})
     .then(resposta => {
         if (resposta.ok) {
             resposta.text().then(texto => {
-                console.log('Sessão :) ', texto);    
+                console.log('Sessão :) ', texto);
+                console.log(resposta)  
             });
         } else {
             console.error('Sessão :.( ');
@@ -39,5 +43,5 @@ function validar_sessao() {
 }
 
 function finalizar_sessao() {
-    fetch(`/usuarios/sair/${login_usuario}`, {cache:'no-store'}); 
+    fetch(`/usuarios/sair/${login_cliente}`, {cache:'no-store'}); 
 }

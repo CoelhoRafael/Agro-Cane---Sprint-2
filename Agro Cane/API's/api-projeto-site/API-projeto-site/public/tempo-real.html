@@ -131,9 +131,9 @@
         setTimeout(atualizacaoPeriodica, 5000);
     }
 
-    function obterdadosporcaminhao(idcaminhao) {
+    function obterdadosporSensor(idSensor) {
         //aguardar();
-        fetch(`/leituras/tempo-real/${idcaminhao}`)
+        fetch(`/leituras/dashboard/${idSensor}`)
         .then(resposta => {
 
             if (resposta.ok) {

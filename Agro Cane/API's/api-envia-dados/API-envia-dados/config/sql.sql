@@ -9,7 +9,7 @@ CREATE TABLE leitura (
 	temperatura DECIMAL,
 	umidade DECIMAL,
 	momento DATETIME,
-	fkcaminhao INT
+	fkSensor INT
 );
 
 CREATE TABLE usuario (
@@ -25,17 +25,31 @@ create database enviaDados;
 
 use enviaDados;
 
-CREATE TABLE leitura (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	temperatura DECIMAL,
-	umidade DECIMAL,
-	momento DATETIME,
-	fkcaminhao INT
+CREATE TABLE Cliente (
+	idCliente INT PRIMARY KEY auto_increment,
+	nomeEmpresa VARCHAR(100),
+	email VARCHAR(40),
+	senha VARCHAR(15),	
+	estado CHAR(2),
+	cnpj CHAR(14),
+	hectares int,
+	qtdSensores int
 );
 
-CREATE TABLE usuario (
-	id INT PRIMARY KEY AUTO_INCREMENT,
-	nome VARCHAR(50),
-	login VARCHAR(50),
-	senha VARCHAR(50)
+CREATE TABLE Sensor (
+	idSensor INT PRIMARY KEY auto_increment,
+	tipoSensor VARCHAR(5),
+	CHECK (tipoSensor = "DHT11" OR tipoSensor = "LM35"),
+	nomeSensor CHAR(1),
+	fkCliente INT,
+	FOREIGN KEY (fkCliente) REFERENCES Cliente(idCliente)
 );
+
+CREATE TABLE leitura (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	temperatura FLOAT,	
+	umidade FLOAT,
+	momento DATETIME,
+	fkSensor INT
+);
+

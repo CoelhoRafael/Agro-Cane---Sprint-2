@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="css/dashboard.css">
     <title>dashboard</title>
 
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+
+    <!-- script do google charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="funcoes.js"></script>
+
+    <!-- scripts do Chart.js -->
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.chartjs.org/samples/latest/utils.js"></script>
     <script type="text/javascript" src="funcoes.js"></script>
 
 </head>
@@ -21,7 +29,7 @@
             <img class="img_header" src="img/usuario_perfil.png" alt="Ícone de usuário">
 
 
-            <h3 class="leo_titulo">Olá, <b class="highlight" id="nomeResp"></b> </h3>
+            <h3 class="leo_titulo">Bem-vindo,<br><b class="highlight" id="nomeResp"></b> </h3>
             <img id="platinha" src="img/plantinha.png" alt="" srcset="">
 
 
@@ -63,32 +71,22 @@
             <div class="leo_caixameio">
 
                 <div class="gui_informacao">
-                    <h3>XX% da sua plantação está XXXXXXXX</h3>
+                    <h3><b><span id="percentual_plan"></span>%</b> da sua plantação está segura</h3>
                 </div>
 
                 <div class="gui_grafico_fora">
-                    <div class="gui_grafico_torta">
+                    <div class="gui_grafico_torta" style="width:100%; margin: auto">
+                        <canvas id="myChart_pie"></canvas>
                         <canvas id="myChart"></canvas>
                     </div>
-                    <div class="gui_grafico_legenda">
-                        <div class="gui_cor_legenda1">Legenda</div>
-                        <div class="gui_cor_legenda2">Legenda</div>
-                    </div>
-
                 </div>
                 <span class="gui_ocorrencia_titulo">Detalhamento da Ocorrência: </span><br> <br>
-                <div class="gui_caixa_ocorrencia">
-                    Sensor X: <i>Situação</i> <br>
-                    Sensor Y: <i>Situação</i> <br>
-                    Sensor Z: <i>Situação</i> <br>
-                </div>
+                <div class="gui_caixa_ocorrencia" id="detalhamento"></div>
 
                 <div class="gui_seleciona">
-                    <select id="sel_seleciona_sensor">
-                        <option value="">SELECIONE UM SENSOR</option>
-                        <option value="">X</option>
-                        <option value="">Y</option>
-                        <option value="">Z</option>
+                    <select id="sel_seleciona_sensor" class="sel_seleciona_t"
+                        onchange="selecione_sensor(Number(sel_seleciona_sensor.value))">
+                        <option value="">SELECIONE O SENSOR</option>
                     </select>
                 </div>
 
@@ -106,80 +104,277 @@
 <script>
 
     // GRAFICO
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'pie',
-        data: {
-            labels: ['Dado 1', 'Dado 2', 'Dado 3', 'Dado 4', 'Dado 5', 'Dado 6'],
-            datasets: [{
-                label: 'Temperatura em °C',
-                // aqui insere informações do JSON no gráfico
-                data: infosCaminhoes[idCaminhao],
-                backgroundColor: [
-                    'rgba(255, 69, 0, 0.6)'
-                ],
-                borderColor: [
-                    'rgba(255, 69, 0)',
-                    'rgba(255, 69, 0)',
-                    'rgba(255, 69, 0)',
-                    'rgba(255, 69, 0)',
-                    'rgba(255, 69, 0)',
-                    'rgba(255, 69, 0)'
-                ],
-                pointRadius: 3,
-                pointBackgroundColor: 'rgba(255, 69, 0)'
-            }]
-        },
-        options: {
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        max: 25,
-                        beginAtZero: true
-                    }
-                }]
-            }
-        }
-    });
-
-    // FIM DO GRÁFICO
-
-    let usuario;
-
     verificar_autenticacao();
+    Sensores();
+    detalhamento_ocorrencia();
 
-    // só mexer se quiser alterar o tempo de atualização
-    // ou se souber o que está fazendo!
-    function atualizacaoPeriodica() {
-        obterdadosporcaminhao(1);
-        obterdadosporcaminhao(2);
-        obterdadosporcaminhao(3);
-        obterdadosporcaminhao(4);
-        setTimeout(atualizacaoPeriodica, 5000);
+    function addOption(valor, valor_corpo) {
+        var option = new Option(valor, valor_corpo);
+        sel_seleciona_sensor.add(option);
     }
 
-
-
-    function obterdadosporcaminhao(idcaminhao) {
-        //aguardar();
-        fetch(`/leituras/tempo-real/${idcaminhao}`)
+    function Sensores() {
+        fetch(`/leituras/selec_sensores/${sessionStorage.idCliente_cliente_meuapp}`)
             .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
 
+                        console.log(`Dados recebidos sensores: ${JSON.stringify(resposta)}`);
+
+                        for (let qtdSensor = 0; qtdSensor < resposta.length; qtdSensor++) {
+                            addOption(resposta[qtdSensor].nomeSensor, resposta[qtdSensor].idSensor); // (id/value, corpo/nomeSensor);
+                        }
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do banco de dados: ${error.message}`);
+            });
+
+    }
+
+    function detalhamento_ocorrencia() {
+        fetch(`/leituras/ocorrencia/${sessionStorage.idCliente_cliente_meuapp}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos detalhamento da ocorrência dos sensores: ${JSON.stringify(resposta)}`);
+
+                        detalhamento.innerHTML = '';
+
+                        for (let qtdSensor = 0; qtdSensor < resposta.length; qtdSensor++) {
+                            // addOption(resposta[qtdSensor].idSensor, resposta[qtdSensor].nomeSensor); 
+                            detalhamento.innerHTML += `Sensor ${resposta[qtdSensor].nomeSensor}<br>`;
+                        }
+                    });
+                } else {
+
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do banco de dados: ${error.message}`);
+            });
+
+    }
+
+    function selecione_sensor(sensores_diversos) {
+        fetch(`/leituras/detalhamento_sensor/${sensores_diversos}`)
+            .then(resposta => {
+                if (resposta.ok) {
+                    resposta.json().then(function (resposta) {
+
+                        console.log(`Dados recebidos sensor detalhe: ${JSON.stringify(resposta)}`);
+
+                        resposta.reverse();
+                        myChart_pie.style.display = 'none';
+                        var dados = {
+                            labels: [],
+                            datasets: [
+                                {
+                                    yAxisID: 'y-temperatura',
+                                    label: 'Temperatura',
+                                    borderColor: 'rgba(255,0,0,1)',
+                                    backgroundColor: 'rgba(255,0,0,1)',
+                                    fill: false,
+                                    data: []
+                                },
+                                {
+                                    yAxisID: 'y-umidade',
+                                    label: 'Umidade',
+                                    borderColor: 'rgba(255,0,255,1)',
+                                    backgroundColor: 'rgba(255,0,255,1)',
+                                    fill: false,
+                                    data: []
+                                }
+                            ]
+                        };
+                        for (i = 0; i < resposta.length; i++) {
+                            var registro = resposta[i];
+                            dados.labels.push(registro.momento_grafico);
+                            dados.datasets[0].data.push(registro.temperatura);
+                            dados.datasets[1].data.push(registro.umidade);
+
+                        }
+                        console.log(JSON.stringify(dados));
+                        plotarGrafico(dados, sensores_diversos);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function plotarGrafico(dados, sensores_diversos) {
+        console.log("executei plotarGrafico")
+        console.log('iniciando plotagem do gráfico...');
+
+        var ctx = myChart.getContext('2d');
+        window.grafico_linha = Chart.Line(ctx, {
+            data: dados,
+            options: configurarGrafico()
+        });
+
+        setTimeout(() => atualizarGrafico(sensores_diversos, dados), 2000);
+    }
+
+    function configurarGrafico() {
+        console.log("executei configurarGrafico")
+        var configuracoes = {
+            responsive: true,
+            animation: { duration: 500 },
+            stacked: false,
+            title: {
+                display: true,
+                text: 'Histórico recente de temperatura e umidade'
+            },
+            scales: {
+                yAxes: [{
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'left',
+                    id: 'y-temperatura',
+                }, {
+                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                    display: true,
+                    position: 'right',
+                    id: 'y-umidade',
+
+                    // grid line settings
+                    gridLines: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                }],
+            }
+        };
+
+        return configuracoes;
+    }
+
+    function atualizarGrafico(sensores_diversos, dados) {
+        console.log("executei atualizarGrafico")
+        fetch(`/leituras/tempo-real/${sensores_diversos}`, { cache: 'no-store' }).then(function (response) {
+            console.log("Estou tentando pegar sensores_diversos = ", sensores_diversos)
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico: ${dados}`);
+
+                    // tirando e colocando valores no gráfico
+                    dados.labels.shift(); // apagar o primeiro
+                    dados.labels.push(novoRegistro.momento_grafico); // incluir um novo momento
+                    dados.datasets[0].data.shift();  // apagar o primeiro de temperatura
+                    dados.datasets[1].data.shift();  // apagar o primeiro de umidade
+                    dados.datasets[0].data.push(novoRegistro.temperatura); // incluir uma nova leitura de temperatura
+                    dados.datasets[1].data.push(novoRegistro.umidade); // incluir uma nova leitura de umidade
+
+                    console.log("meu sensor é o " + sensores_diversos)
+
+                    window.grafico_linha.update();
+
+
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(sensores_diversos, dados), 5000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(sensores_diversos, dados), 5000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+
+    function atualizacaoPeriodica() {
+
+        fetch(`/leituras/dashboard/${sessionStorage.idCliente_cliente_meuapp}`)
+            .then(resposta => {
                 if (resposta.ok) {
                     resposta.json().then(function (resposta) {
 
                         console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                        // aqui, após registro. use os nomes
-                        // dos atributos que vem no JSON
-                        var dados = {
-                            temperatura: resposta.temperatura,
-                            umidade: resposta.umidade
+                        var sensor_naoOk = 0;
+                        var sensor_ok = 0;
+
+                        for (var contador = 0; contador < resposta.length; contador++){
+                            if (resposta[contador].temperatura <= 11 || resposta[contador].temperatura >= 30 || resposta[contador].umidade <= 10 || resposta[contador].umidade >= 90) {
+                                sensor_naoOk++;
+                            } else {
+                                sensor_ok++;
+                            }
                         }
 
-                        alertar(resposta.temperatura, resposta.umidade, idcaminhao);
-                        atualizarTela(dados, idcaminhao);
+                        var porcentagem = (sensor_ok / (sensor_ok + sensor_naoOk)) * 100;
+                        percentual_plan.innerHTML = porcentagem;
+
+                        var ctx = document.getElementById('myChart_pie').getContext('2d');
+                        var myChart_pie = new Chart(ctx, {
+                            type: 'pie',
+                            data: {
+                                labels: ['Não Ok', 'Ok'],
+                                datasets: [{
+                                    label: '# of Votes',
+                                    data: [sensor_naoOk, sensor_ok],
+                                    backgroundColor: [
+                                        'rgba(116, 185, 255,1.0)',
+                                        'rgba(178, 190, 195,1.0)'
+
+
+                                    ],
+                                    borderColor: [
+                                        'rgba(255, 99, 132, 0.2)',
+                                        'rgba(54, 162, 235, 0.2)'
+
+
+                                    ],
+                                    borderWidth: 0
+
+
+                                }]
+                            },
+                            options: {
+
+                                title: {
+                                    // mostrar titulo?
+                                    display: true,
+                                    // tamanho do texto
+                                    fontSize: 20,
+                                    // texto no titulo
+                                    text: '',
+                                    // onde? right? left? top?
+                                    position: 'top',
+                                },
+                                legend: {
+                                    // mostrar legenda?
+                                    display: true,
+                                    // ao contrario? (dataset 1 depois de 2)
+                                    reverse: false,
+                                    // onde?
+                                    position: 'right'
+                                },
+                                layout: {
+                                    padding: {
+                                        // padding do grafico, pode add right e bottom também
+                                        left: 50,
+                                        top: 50
+                                    },
+
+                                }
+                            }
+                        })
+
+
                     });
                 } else {
 
@@ -187,98 +382,145 @@
                 }
             })
             .catch(function (error) {
-                console.error(`Erro na obtenção dos dados do caminhao p/ gráfico: ${error.message}`);
+                console.error(`Erro na obtenção dos dados do banco de dados: ${error.message}`);
             });
-    }
-
-    function alertar(temperatura, umidade, idcaminhao) {
-        // padrão para meu alerta
-        var limites = {
-            max_temperatura: 40,
-            min_temperatura: 20,
-            max_umidade: 80,
-            min_umidade: 50,
-        };
-
-        // zerar aviso de mensagem
-        var mensagem_temperatura = '';
-        var mensagem_umidade = '';
-        var classe_temperatura = 'alerta';
-        var classe_umidade = 'alerta_umidd';
-
-        // comparando
-        if (temperatura > limites.max_temperatura) {
-            mensagem_temperatura += 'Temperatura alta demais! <br>';
-            classe_temperatura = 'alerta alerta-alto';
-        }
-        if (umidade > limites.max_umidade) {
-            mensagem_umidade += 'Umidade alta demais! <br>';
-            classe_umidade = 'alerta_umidd alerta-alto';
-        }
-        if (temperatura < limites.min_temperatura) {
-            mensagem_temperatura = 'Temperatura baixa demais! <br>';
-            classe_temperatura = 'alerta alerta-baixo';
-        }
-        if (umidade < limites.min_umidade) {
-            mensagem_umidade = 'Umidade baixa demais! <br>';
-            classe_umidade = 'alerta_umidd alerta-baixo';
-        }
-
-        // escolhendo qual alterar
-        var div_temperatura_alterar
-        var div_umidade_alterar
-
-        if (idcaminhao == 1) {
-            div_temperatura_alterar = div_alerta_temperatura
-            div_umidade_alterar = div_alerta_umidade
-        } else if (idcaminhao == 2) {
-            div_temperatura_alterar = div_alerta_temperatura2
-            div_umidade_alterar = div_alerta_umidade2
-        } else if (idcaminhao == 3) {
-            div_temperatura_alterar = div_alerta_temperatura3
-            div_umidade_alterar = div_alerta_umidade3
-        } else if (idcaminhao == 4) {
-            div_temperatura_alterar = div_alerta_temperatura4
-            div_umidade_alterar = div_alerta_umidade4
-        }
-
-        // alterando
-        div_temperatura_alterar.innerHTML = mensagem_temperatura;
-        div_temperatura_alterar.className = classe_temperatura;
-
-        div_umidade_alterar.innerHTML = mensagem_umidade;
-        div_umidade_alterar.className = classe_umidade;
-    }
-
-    // só altere aqui se souber o que está fazendo!
-    function atualizarTela(dados, idcaminhao) {
-        console.log('iniciando atualização da tela...');
-
-        // escolhendo qual alterar
-        var div_temperatura_alterar
-        var div_umidade_alterar
-
-        if (idcaminhao == 1) {
-            div_temperatura_alterar = div_temperatura
-            div_umidade_alterar = div_umidade
-        } else if (idcaminhao == 2) {
-            div_temperatura_alterar = div_temperatura2
-            div_umidade_alterar = div_umidade2
-        } else if (idcaminhao == 3) {
-            div_temperatura_alterar = div_temperatura3
-            div_umidade_alterar = div_umidade3
-        } else if (idcaminhao == 4) {
-            div_temperatura_alterar = div_temperatura4
-            div_umidade_alterar = div_umidade4
-        }
-
-        div_temperatura_alterar.innerHTML = `Temperatura: ${dados.temperatura}º`;
-
-        div_umidade_alterar.innerHTML = `Umidade: ${dados.umidade}%`;
-
-
 
     }
+
+    Chart.defaults.global.defaultFontColor = "#000";
+
+    // FIM DO GRÁFICO
+
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
+    // function atualizacaoPeriodica() {
+    //     obterdadosporcaminhao(1);
+    //     obterdadosporcaminhao(2);
+    //     obterdadosporcaminhao(3);
+    //     obterdadosporcaminhao(4);
+    //     setTimeout(atualizacaoPeriodica, 5000);
+    // }
+
+
+
+    // function obterdadosporcaminhao(sensores_diversos) {
+    //     //aguardar();
+    //     fetch(`/leituras/tempo-real/${idcaminhao}`)
+    //         .then(resposta => {
+
+    //             if (resposta.ok) {
+    //                 resposta.json().then(function (resposta) {
+
+    //                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+
+    //                     // aqui, após registro. use os nomes
+    //                     // dos atributos que vem no JSON
+    //                     var dados = {
+    //                         temperatura: resposta.temperatura,
+    //                         umidade: resposta.umidade
+    //                     }
+
+    //                     alertar(resposta.temperatura, resposta.umidade, idcaminhao);
+    //                     atualizarTela(dados, idcaminhao);
+    //                 });
+    //             } else {
+
+    //                 console.error('Nenhum dado encontrado ou erro na API');
+    //             }
+    //         })
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados do caminhao p/ gráfico: ${error.message}`);
+    //         });
+    // }
+
+    // function alertar(temperatura, umidade, idcaminhao) {
+    //     // padrão para meu alerta
+    //     var limites = {
+    //         max_temperatura: 40,
+    //         min_temperatura: 20,
+    //         max_umidade: 80,
+    //         min_umidade: 50,
+    //     };
+
+    //     // zerar aviso de mensagem
+    //     var mensagem_temperatura = '';
+    //     var mensagem_umidade = '';
+    //     var classe_temperatura = 'alerta';
+    //     var classe_umidade = 'alerta_umidd';
+
+    //     // comparando
+    //     if (temperatura > limites.max_temperatura) {
+    //         mensagem_temperatura += 'Temperatura alta demais! <br>';
+    //         classe_temperatura = 'alerta alerta-alto';
+    //     }
+    //     if (umidade > limites.max_umidade) {
+    //         mensagem_umidade += 'Umidade alta demais! <br>';
+    //         classe_umidade = 'alerta_umidd alerta-alto';
+    //     }
+    //     if (temperatura < limites.min_temperatura) {
+    //         mensagem_temperatura = 'Temperatura baixa demais! <br>';
+    //         classe_temperatura = 'alerta alerta-baixo';
+    //     }
+    //     if (umidade < limites.min_umidade) {
+    //         mensagem_umidade = 'Umidade baixa demais! <br>';
+    //         classe_umidade = 'alerta_umidd alerta-baixo';
+    //     }
+
+    //     // escolhendo qual alterar
+    //     var div_temperatura_alterar
+    //     var div_umidade_alterar
+
+    //     if (idcaminhao == 1) {
+    //         div_temperatura_alterar = div_alerta_temperatura
+    //         div_umidade_alterar = div_alerta_umidade
+    //     } else if (idcaminhao == 2) {
+    //         div_temperatura_alterar = div_alerta_temperatura2
+    //         div_umidade_alterar = div_alerta_umidade2
+    //     } else if (idcaminhao == 3) {
+    //         div_temperatura_alterar = div_alerta_temperatura3
+    //         div_umidade_alterar = div_alerta_umidade3
+    //     } else if (idcaminhao == 4) {
+    //         div_temperatura_alterar = div_alerta_temperatura4
+    //         div_umidade_alterar = div_alerta_umidade4
+    //     }
+
+    //     // alterando
+    //     div_temperatura_alterar.innerHTML = mensagem_temperatura;
+    //     div_temperatura_alterar.className = classe_temperatura;
+
+    //     div_umidade_alterar.innerHTML = mensagem_umidade;
+    //     div_umidade_alterar.className = classe_umidade;
+    // }
+
+    // // só altere aqui se souber o que está fazendo!
+    // function atualizarTela(dados, idcaminhao) {
+    //     console.log('iniciando atualização da tela...');
+
+    //     // escolhendo qual alterar
+    //     var div_temperatura_alterar
+    //     var div_umidade_alterar
+
+    //     if (idcaminhao == 1) {
+    //         div_temperatura_alterar = div_temperatura
+    //         div_umidade_alterar = div_umidade
+    //     } else if (idcaminhao == 2) {
+    //         div_temperatura_alterar = div_temperatura2
+    //         div_umidade_alterar = div_umidade2
+    //     } else if (idcaminhao == 3) {
+    //         div_temperatura_alterar = div_temperatura3
+    //         div_umidade_alterar = div_umidade3
+    //     } else if (idcaminhao == 4) {
+    //         div_temperatura_alterar = div_temperatura4
+    //         div_umidade_alterar = div_umidade4
+    //     }
+
+    //     div_temperatura_alterar.innerHTML = `Temperatura: ${dados.temperatura}º`;
+
+    //     div_umidade_alterar.innerHTML = `Umidade: ${dados.umidade}%`;
+
+
+
+    // }
 
 
     function sendData() {

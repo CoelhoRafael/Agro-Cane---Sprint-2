@@ -128,24 +128,24 @@ color: #e7e6a0;
     background-color: #33333393;
     border-radius: 3%;
 }
+
 .gui_informacao {
-    background-color: darkgreen;
     padding: 2% 0 2% 0;
     width: 80%;
+    text-transform: uppercase;
+    font-size: 18px;
 }
 
 .gui_grafico_fora {
-    background-color: yellow;
-    height: 275px;
+    height: 310px;
     margin-bottom: 3.5%;
 }
 
 .gui_grafico_torta {
-    background-color: red;
-    height: 275px;
-    width: 275px;
+    height: 350px;
+    width: 180px;
+    margin-top: 0;
     float: left;
-    margin-left: 5%;
 }
 
 .gui_grafico_legenda {
@@ -155,6 +155,7 @@ color: #e7e6a0;
     width: 200px;
     margin-right: 5%;
 }
+
 .gui_cor_legenda1 {
     background-color: pink;
     height: 20px;
@@ -174,15 +175,29 @@ color: #e7e6a0;
 .gui_caixa_ocorrencia {
     background-color: #e7e6a0;
     width: 70%;
-    height: 60px;
+    height: 80px;
     padding: 2% 0 2% 0;
     font-size: 20px;
+    overflow-y: scroll;
 }
+
 .gui_ocorrencia_titulo {
     color: white;
     font-size: 23px;
     /* font-weight: bold; */
 }
+
+.gui_seleciona {
+    border: none;
+    margin-top: 20px;
+
+}
+
+.sel_seleciona_t {
+    border-radius: 20px;
+    padding: 10px 50px;
+}
+
 
 
 

@@ -28,6 +28,11 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.DATE, // NÃO existe DATETIME. O tipo DATE aqui já tem data e hora
 			allowNull: false
 		},
+		nomeSensor: {
+			field: 'nomeSensor',
+			type: DataTypes.STRING, 
+			allowNull: false
+		},
 		momento_grafico: {
 			type: DataTypes.VIRTUAL, // campo 'falso' (não existe na tabela). Deverá ser preenchido 'manualmente' no select (O QUE É ISSO?)
 			allowNull: true

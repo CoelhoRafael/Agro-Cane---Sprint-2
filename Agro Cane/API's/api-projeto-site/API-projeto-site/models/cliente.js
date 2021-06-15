@@ -7,8 +7,8 @@ https://codewithhugo.com/sequelize-data-types-a-practical-guide/
 
 module.exports = (sequelize, DataTypes) => {
     let Cliente = sequelize.define('Cliente',{	
-		id: {
-			field: 'idcliente',
+		idCliente: {
+			field: 'idCliente',
 			type: DataTypes.INTEGER,
 			primaryKey: true,
 			autoIncrement: true
@@ -16,11 +16,6 @@ module.exports = (sequelize, DataTypes) => {
 		nomeEmpresa: {
 			field: 'nomeEmpresa',
 			type: DataTypes.STRING(100), 
-			allowNull: false
-		},
-		nomeResp: {
-			field: 'nomeResp',
-			type: DataTypes.STRING(75), 
 			allowNull: false
 		},
 		email: {
