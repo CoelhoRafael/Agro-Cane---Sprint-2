@@ -22,4 +22,5 @@ select * from Cliente;
 select * from leitura;
 select * from usuario;
 
+
 Select * From INFORMATION_SCHEMA.COLUMNS Where TABLE_NAME = 'leitura';
