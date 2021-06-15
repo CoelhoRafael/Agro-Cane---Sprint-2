@@ -26,25 +26,25 @@
     <div class="header">
         <div class="header_img">
 
-            <img class="img_header" src="img/usuario_perfil.png" alt="Ícone de usuário">
-
+            <div class="img_header" id="imagemCliente"></div>
 
             <h3 class="leo_titulo">Bem-vindo,<br><b class="highlight" id="nomeResp"></b> </h3>
-            <img id="platinha" src="img/plantinha.png" alt="" srcset="">
+            <img id="platinha" class="plantinha" src="img/plantinha.png" alt="" srcset="">
 
 
         </div>
 
         <div class="gui_conteudo">
-            <div class="gui_conteudo_titulo"><span id="leo_agro">Agro</span> <span id="leo_cane">Cane</span></div> <br>
+            <div class="gui_conteudo_titulo"><span id="leo_agro">Agro</span> <span id="leo_cane">Cane</span></div>
 
             <p class="gui_barrinha"></p> <br>
-
-            <span class="leo_creme">Sempre ajudando
-                sua </span><span class="gui_destaque">empresa</span><span class="leo_creme"> na
-                detecção de </span><span class="gui_destaque">riscos</span>
-            <span class="leo_creme">e tomada de</span>
-            <span class="gui_destaque">decisão.</span>
+            <div class="frase_engloba">
+                <span class="leo_creme">Sempre ajudando
+                    sua </span><span class="gui_destaque">empresa</span><span class="leo_creme"> na
+                    detecção de </span><span class="gui_destaque">riscos</span>
+                <span class="leo_creme">e tomada de</span>
+                <span class="gui_destaque">decisão.</span>
+            </div>
 
         </div>
 
@@ -68,19 +68,20 @@
 
         <center>
 
-            <div class="leo_caixameio">
+            <div class="leo_caixameio" id="dados_empresa_sensores">
 
                 <div class="gui_informacao">
-                    <h3><b><span id="percentual_plan"></span>%</b> da sua plantação está segura</h3>
+                    <h3><b><span id="percentual_plan"></span>%</b> da sua plantação está <b>controlada</b></h3>
                 </div>
 
                 <div class="gui_grafico_fora">
                     <div class="gui_grafico_torta" style="width:100%; margin: auto">
                         <canvas id="myChart_pie"></canvas>
                         <canvas id="myChart"></canvas>
+                        <div id="result" class="result_detalheSensor"></div>
                     </div>
                 </div>
-                <span class="gui_ocorrencia_titulo">Detalhamento da Ocorrência: </span><br> <br>
+                <span class="gui_ocorrencia_titulo">Sensores Localizados</span><br> <br>
                 <div class="gui_caixa_ocorrencia" id="detalhamento"></div>
 
                 <div class="gui_seleciona">
@@ -92,9 +93,20 @@
 
             </div>
 
+            <div style="display: none;" id="instalacao_thais" class="instalacao">
+                <p>
+                    Sua empresa ainda <b>não possui</b> nossos sensores. <br><br>
+                    Entre em contato com o <b>atendimento ao cliente</b> ou <b>suporte</b> para agendar a instalação.<br><br>
+                    Para falar com o suporte envie um email para <b>support@agrocanehelp.zendesk.com</b> ou clique em <span class="ajuda">ajuda</span>.
+                </p>
+                <button onclick="buttom_ok()">Ok</button>
+            </div>
+
         </center>
 
-
+        <script id="ze-snippet"
+            src="https://static.zdassets.com/ekr/snippet.js?key=579a4034-dcb3-4097-a04d-9aeaddd45610">
+            </script>
 
     </div>
 </body>
@@ -103,10 +115,18 @@
 
 <script>
 
-    // GRAFICO
     verificar_autenticacao();
+    grafico_pizza();
     Sensores();
-    detalhamento_ocorrencia();
+
+    function atualizacaoPeriodica() {
+        detalhamento_ocorrencia();
+        status_sensor();
+        setTimeout(atualizacaoPeriodica, 5000);
+        setTimeout(() => {
+            sendData();
+        }, 5000);
+    }
 
     function addOption(valor, valor_corpo) {
         var option = new Option(valor, valor_corpo);
@@ -121,9 +141,16 @@
 
                         console.log(`Dados recebidos sensores: ${JSON.stringify(resposta)}`);
 
-                        for (let qtdSensor = 0; qtdSensor < resposta.length; qtdSensor++) {
-                            addOption(resposta[qtdSensor].nomeSensor, resposta[qtdSensor].idSensor); // (id/value, corpo/nomeSensor);
+                        if (resposta == 0) {
+                            dados_empresa_sensores.style.display = 'none';
+                            instalacao_thais.style.display = 'block';
+                        } else {
+                            for (let qtdSensor = 0; qtdSensor < resposta.length; qtdSensor++) {
+                                addOption(resposta[qtdSensor].nomeSensor, resposta[qtdSensor].idSensor); // (id/value, corpo/nomeSensor);
+                            }
                         }
+
+
                     });
                 } else {
                     console.error('Nenhum dado encontrado ou erro na API');
@@ -179,16 +206,16 @@
                                 {
                                     yAxisID: 'y-temperatura',
                                     label: 'Temperatura',
-                                    borderColor: 'rgba(255,0,0,1)',
-                                    backgroundColor: 'rgba(255,0,0,1)',
+                                    borderColor: 'red',
+                                    backgroundColor: 'red',
                                     fill: false,
                                     data: []
                                 },
                                 {
                                     yAxisID: 'y-umidade',
                                     label: 'Umidade',
-                                    borderColor: 'rgba(255,0,255,1)',
-                                    backgroundColor: 'rgba(255,0,255,1)',
+                                    borderColor: 'blue',
+                                    backgroundColor: 'blue',
                                     fill: false,
                                     data: []
                                 }
@@ -234,7 +261,7 @@
             stacked: false,
             title: {
                 display: true,
-                text: 'Histórico recente de temperatura e umidade'
+                text: ''
             },
             scales: {
                 yAxes: [{
@@ -279,6 +306,19 @@
 
                     console.log("meu sensor é o " + sensores_diversos)
 
+                    console.log('temperatura e umidade parametros', novoRegistro.temperatura, novoRegistro.umidade)
+                    if (novoRegistro.temperatura == null || novoRegistro.umidade == null) {
+                        statusLux.innerHTML = 'Error';
+                    } else if (novoRegistro.temperatura <= 11 || novoRegistro.temperatura >= 30) {
+                        result.innerHTML = '<span style="color: red;">Temperatura Crítica</span>';
+                    } else if (novoRegistro.umidade <= 10 || novoRegistro.umidade >= 90) {
+                        result.innerHTML = '<span style="color: blue;">Umidade Crítica</span>';
+                    } else if ((novoRegistro.temperatura <= 11 || novoRegistro.temperatura >= 30) && (novoRegistro.umidade <= 10 || novoRegistro.umidade >= 90)) {
+                        result.innerHTML = '<span style="color: red;">Temperatura</span> e <span style="color: blue;">Umidade</span> Crítica';
+                    } else {
+                        result.innerHTML = ''
+                    }
+
                     window.grafico_linha.update();
 
 
@@ -295,7 +335,7 @@
 
     }
 
-    function atualizacaoPeriodica() {
+    function grafico_pizza() {
 
         fetch(`/leituras/dashboard/${sessionStorage.idCliente_cliente_meuapp}`)
             .then(resposta => {
@@ -307,7 +347,7 @@
                         var sensor_naoOk = 0;
                         var sensor_ok = 0;
 
-                        for (var contador = 0; contador < resposta.length; contador++){
+                        for (var contador = 0; contador < resposta.length; contador++) {
                             if (resposta[contador].temperatura <= 11 || resposta[contador].temperatura >= 30 || resposta[contador].umidade <= 10 || resposta[contador].umidade >= 90) {
                                 sensor_naoOk++;
                             } else {
@@ -322,25 +362,16 @@
                         var myChart_pie = new Chart(ctx, {
                             type: 'pie',
                             data: {
-                                labels: ['Não Ok', 'Ok'],
+                                labels: ['Plantação Não Controlada', 'Plantação Controlada'],
                                 datasets: [{
                                     label: '# of Votes',
                                     data: [sensor_naoOk, sensor_ok],
                                     backgroundColor: [
-                                        'rgba(116, 185, 255,1.0)',
-                                        'rgba(178, 190, 195,1.0)'
-
-
+                                        '#C00000',
+                                        '#00B050'
                                     ],
-                                    borderColor: [
-                                        'rgba(255, 99, 132, 0.2)',
-                                        'rgba(54, 162, 235, 0.2)'
-
-
-                                    ],
+                                    borderColor: [],
                                     borderWidth: 0
-
-
                                 }]
                             },
                             options: {
@@ -349,7 +380,7 @@
                                     // mostrar titulo?
                                     display: true,
                                     // tamanho do texto
-                                    fontSize: 20,
+                                    fontSize: 0,
                                     // texto no titulo
                                     text: '',
                                     // onde? right? left? top?
@@ -366,8 +397,8 @@
                                 layout: {
                                     padding: {
                                         // padding do grafico, pode add right e bottom também
-                                        left: 50,
-                                        top: 50
+                                        left: 5,
+                                        top: 10
                                     },
 
                                 }
@@ -387,141 +418,11 @@
 
     }
 
-    Chart.defaults.global.defaultFontColor = "#000";
+    Chart.defaults.global.defaultFontColor = "white";
 
-    // FIM DO GRÁFICO
-
-    // só mexer se quiser alterar o tempo de atualização
-    // ou se souber o que está fazendo!
-    // function atualizacaoPeriodica() {
-    //     obterdadosporcaminhao(1);
-    //     obterdadosporcaminhao(2);
-    //     obterdadosporcaminhao(3);
-    //     obterdadosporcaminhao(4);
-    //     setTimeout(atualizacaoPeriodica, 5000);
-    // }
-
-
-
-    // function obterdadosporcaminhao(sensores_diversos) {
-    //     //aguardar();
-    //     fetch(`/leituras/tempo-real/${idcaminhao}`)
-    //         .then(resposta => {
-
-    //             if (resposta.ok) {
-    //                 resposta.json().then(function (resposta) {
-
-    //                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-    //                     // aqui, após registro. use os nomes
-    //                     // dos atributos que vem no JSON
-    //                     var dados = {
-    //                         temperatura: resposta.temperatura,
-    //                         umidade: resposta.umidade
-    //                     }
-
-    //                     alertar(resposta.temperatura, resposta.umidade, idcaminhao);
-    //                     atualizarTela(dados, idcaminhao);
-    //                 });
-    //             } else {
-
-    //                 console.error('Nenhum dado encontrado ou erro na API');
-    //             }
-    //         })
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados do caminhao p/ gráfico: ${error.message}`);
-    //         });
-    // }
-
-    // function alertar(temperatura, umidade, idcaminhao) {
-    //     // padrão para meu alerta
-    //     var limites = {
-    //         max_temperatura: 40,
-    //         min_temperatura: 20,
-    //         max_umidade: 80,
-    //         min_umidade: 50,
-    //     };
-
-    //     // zerar aviso de mensagem
-    //     var mensagem_temperatura = '';
-    //     var mensagem_umidade = '';
-    //     var classe_temperatura = 'alerta';
-    //     var classe_umidade = 'alerta_umidd';
-
-    //     // comparando
-    //     if (temperatura > limites.max_temperatura) {
-    //         mensagem_temperatura += 'Temperatura alta demais! <br>';
-    //         classe_temperatura = 'alerta alerta-alto';
-    //     }
-    //     if (umidade > limites.max_umidade) {
-    //         mensagem_umidade += 'Umidade alta demais! <br>';
-    //         classe_umidade = 'alerta_umidd alerta-alto';
-    //     }
-    //     if (temperatura < limites.min_temperatura) {
-    //         mensagem_temperatura = 'Temperatura baixa demais! <br>';
-    //         classe_temperatura = 'alerta alerta-baixo';
-    //     }
-    //     if (umidade < limites.min_umidade) {
-    //         mensagem_umidade = 'Umidade baixa demais! <br>';
-    //         classe_umidade = 'alerta_umidd alerta-baixo';
-    //     }
-
-    //     // escolhendo qual alterar
-    //     var div_temperatura_alterar
-    //     var div_umidade_alterar
-
-    //     if (idcaminhao == 1) {
-    //         div_temperatura_alterar = div_alerta_temperatura
-    //         div_umidade_alterar = div_alerta_umidade
-    //     } else if (idcaminhao == 2) {
-    //         div_temperatura_alterar = div_alerta_temperatura2
-    //         div_umidade_alterar = div_alerta_umidade2
-    //     } else if (idcaminhao == 3) {
-    //         div_temperatura_alterar = div_alerta_temperatura3
-    //         div_umidade_alterar = div_alerta_umidade3
-    //     } else if (idcaminhao == 4) {
-    //         div_temperatura_alterar = div_alerta_temperatura4
-    //         div_umidade_alterar = div_alerta_umidade4
-    //     }
-
-    //     // alterando
-    //     div_temperatura_alterar.innerHTML = mensagem_temperatura;
-    //     div_temperatura_alterar.className = classe_temperatura;
-
-    //     div_umidade_alterar.innerHTML = mensagem_umidade;
-    //     div_umidade_alterar.className = classe_umidade;
-    // }
-
-    // // só altere aqui se souber o que está fazendo!
-    // function atualizarTela(dados, idcaminhao) {
-    //     console.log('iniciando atualização da tela...');
-
-    //     // escolhendo qual alterar
-    //     var div_temperatura_alterar
-    //     var div_umidade_alterar
-
-    //     if (idcaminhao == 1) {
-    //         div_temperatura_alterar = div_temperatura
-    //         div_umidade_alterar = div_umidade
-    //     } else if (idcaminhao == 2) {
-    //         div_temperatura_alterar = div_temperatura2
-    //         div_umidade_alterar = div_umidade2
-    //     } else if (idcaminhao == 3) {
-    //         div_temperatura_alterar = div_temperatura3
-    //         div_umidade_alterar = div_umidade3
-    //     } else if (idcaminhao == 4) {
-    //         div_temperatura_alterar = div_temperatura4
-    //         div_umidade_alterar = div_umidade4
-    //     }
-
-    //     div_temperatura_alterar.innerHTML = `Temperatura: ${dados.temperatura}º`;
-
-    //     div_umidade_alterar.innerHTML = `Umidade: ${dados.umidade}%`;
-
-
-
-    // }
-
+    function buttom_ok() {
+        instalacao_thais.style.display = 'none';
+    }
 
     function sendData() {
         var http = new XMLHttpRequest();

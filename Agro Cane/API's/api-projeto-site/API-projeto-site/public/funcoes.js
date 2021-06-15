@@ -16,6 +16,7 @@ function verificar_autenticacao() {
         redirecionar_login();
     } else {
         nomeResp.innerHTML = nome_usuario;
+        imagemCliente.innerHTML = `<img src="${nome_usuario}.png">`;
         validar_sessao();
     }
     

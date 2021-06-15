@@ -73,9 +73,9 @@
                     Confirmar Senha: <br>
                     <input id="confirm_password" class="input" type="password" name="senha_confirm"><br>
                     Estado: <br>
-                    <input class="input" type="text" name="estado"><br>
+                    <input minlength="2" maxlength="2" class="input" type="text" name="estado"><br>
                     CNPJ: <br>
-                    <input class="input" type="text" name="cnpj"><br>
+                    <input minlength="14" maxlength="14" class="input" type="text" name="cnpj"><br>
                     Quantidade (Em hectare): <br>
                     <input class="input" type="number" name="hectares"><br>
 
@@ -103,28 +103,33 @@
 <script>
 
     function cadastrar() {
-        aguardar();
-        var formulario = new URLSearchParams(new FormData(form_cadastro));
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            body: formulario
-        }).then(function (response) {
+        if (password.value == confirm_password.value) {
+            aguardar();
+            var formulario = new URLSearchParams(new FormData(form_cadastro));
+            fetch("/usuarios/cadastrar", {
+                method: "POST",
+                body: formulario
+            }).then(function (response) {
 
-            if (response.ok) {
+                if (response.ok) {
 
-                window.location.href = 'login.html';
+                    window.location.href = 'login.html';
 
-            } else {
+                } else {
 
-                console.log('Erro de cadastro!');
-                response.text().then(function (resposta) {
-                    div_erro.innerHTML = resposta;
-                });
-                finalizar_aguardar();
-            }
-        });
+                    console.log('Erro de cadastro!');
+                    response.text().then(function (resposta) {
+                        div_erro.innerHTML = resposta;
+                    });
+                    finalizar_aguardar();
+                }
+            });
 
-        return false;
+            return false;
+        } else {
+            alert("As senhas devem ser iguais!");
+            return false;
+        }
     }
 
     function aguardar() {

@@ -34,14 +34,27 @@ a {
     text-align: center;
 }
 
-.img_header {
-    height: 100px;
+.img_header img {
+    width: 50%;
+    /* height: 100px; */
     margin-left: 1%;
     margin: auto;  
-    
+    border: 3px solid #006301;
+    background-color: #05613E;
+    border-radius: 5px;
 }
+
+.result_detalheSensor {
+    font-weight: 600;
+    font-size: 20px;
+    background-color: white;
+    width: 75%;
+    border-radius: 10px;
+}
+
 .leo_titulo{
-color: #e7e6a0;
+    color: #e7e6a0;
+    margin-bottom: 6%;
 }
 
 #platinha{
@@ -52,8 +65,13 @@ color: #e7e6a0;
 
 .highlight {
     text-transform: uppercase;
-    color: #e7e6a0;
+    color: #006301;
+    font-size: 25px;
+}
 
+.frase_engloba {
+    width: 85%;
+    margin-left: 8%;
 }
 
 .gui_conteudo {
@@ -63,30 +81,36 @@ color: #e7e6a0;
     margin: auto;
     font-size: 17.5px;
     padding-bottom: 35%;
+    margin-top: 8%;
 }
 
 .gui_conteudo_titulo {
     font-size: 23px;
     font-weight: bold;
-    
+    margin-bottom: 0;
+    padding: 0;
 }
 
 #leo_agro{
     color: #006301;
+    font-size: 35px;
 }
 
 #leo_cane{
     color: #e7e6a0;
+    font-size: 35px;
 }
 
 .gui_barrinha{
     margin: 0;
+    margin-top: 2%;
     /* text-align: center; */
-    margin-left: 14px;
-    height: 6px;
-    width: 165px;
-    border-radius: 100px;
+    margin-left: 7.5%;
+    height: 4px;
+    width: 185px;
+    border-radius: 5px;
     background-color: #006301;
+    padding: 0;
 }
 
 .gui_destaque {
@@ -121,19 +145,28 @@ color: #e7e6a0;
 } */
 
 .leo_caixameio{
-    margin-top: 10px;
     height: 700px;
     width: 40%;
     margin-left: 15%;
-    background-color: #33333393;
+    background-color: #333333be;
     border-radius: 3%;
+    border: 2px solid #d1d1cc;
 }
 
 .gui_informacao {
     padding: 2% 0 2% 0;
-    width: 80%;
+    width: 95%;
     text-transform: uppercase;
-    font-size: 18px;
+    font-size: 20px;
+}
+
+.gui_informacao h3 {
+    font-weight: 400;
+    color: white;
+}
+
+.gui_informacao b {
+    font-weight: 800;
 }
 
 .gui_grafico_fora {
@@ -175,15 +208,16 @@ color: #e7e6a0;
 .gui_caixa_ocorrencia {
     background-color: #e7e6a0;
     width: 70%;
-    height: 80px;
+    height: 75px;
     padding: 2% 0 2% 0;
-    font-size: 20px;
+    font-size: 22px;
     overflow-y: scroll;
+    border-radius: 5px;
 }
 
 .gui_ocorrencia_titulo {
     color: white;
-    font-size: 23px;
+    font-size: 25px;
     /* font-weight: bold; */
 }
 
@@ -196,7 +230,54 @@ color: #e7e6a0;
 .sel_seleciona_t {
     border-radius: 20px;
     padding: 10px 50px;
+    cursor: pointer;
+    font-weight: 800;
+    background-color: #e7e6a0;
 }
+
+.instalacao {
+    background-color: #e7e6a0c5;
+    margin: 15% 18%;
+    margin-left: 35%;
+    padding: 2% 2%;
+    border-radius: 20px;
+    box-shadow: 3px 3px 1px #006301;
+    transition: 0.5s;
+    margin-top: 12%;
+}
+
+.instalacao p {
+    font-size: 18px;
+}
+
+.instalacao button {
+    border: none;
+    padding: 10px 60px;
+    border-radius: 5px;
+    margin-top: 2%;
+    border: 3px solid #006301;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #55a44e;
+    color: white;
+    transition: 0.4s;
+}
+
+.instalacao button:hover {
+    letter-spacing: 5px;
+    background-color: #006301;
+    padding: 10px 70px;
+}
+
+.ajuda {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+
 
 
 

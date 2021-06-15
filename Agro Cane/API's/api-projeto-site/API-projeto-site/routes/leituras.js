@@ -133,8 +133,9 @@ router.get('/dashboard/:idCliente', function (req, res, next) {
 	let instrucaoSql = "";
 	if (env == 'dev') {
 		instrucaoSql = `select idSensor, temperatura, umidade from dadoSensor inner join Sensor on fkSensor = idSensor where fkCliente = ${idCliente} and idDado in (select max(idDado) from dadoSensor group by fkSensor);`;
+	} else if (env == 'production') {
+		instrucaoSql = `select idSensor, temperatura, umidade from dadoSensor inner join Sensor on fkSensor = idSensor where fkCliente = ${idCliente} and idDado in (select max(idDado) from dadoSensor group by fkSensor);`;
 	}
-
 
 	sequelize.query(instrucaoSql, { type: sequelize.QueryTypes.SELECT })
 		.then(resultado => {
@@ -154,6 +155,8 @@ router.get('/selec_sensores/:idCliente', function (req, res, next) {
 
 	let instrucaoSql = "";
 	if (env == 'dev') {
+		instrucaoSql = `select idSensor, nomeSensor, fkCliente from Sensor where fkCliente = ${idCliente};`;
+	} else if (env == 'production') {
 		instrucaoSql = `select idSensor, nomeSensor, fkCliente from Sensor where fkCliente = ${idCliente};`;
 	}
 
@@ -176,6 +179,8 @@ router.get('/ocorrencia/:idCliente', function (req, res, next) {
 
 	let instrucaoSql = "";
 	if (env == 'dev') {
+		instrucaoSql = `select distinct(idSensor), nomeSensor, fkCliente from Sensor inner join dadoSensor on idSensor = fkSensor where (temperatura <= 11 or temperatura >= 30 and umidade <= 10 or umidade >= 90) and fkCliente = ${idCliente};`;
+	} else if (env == 'production') {
 		instrucaoSql = `select distinct(idSensor), nomeSensor, fkCliente from Sensor inner join dadoSensor on idSensor = fkSensor where (temperatura <= 11 or temperatura >= 30 and umidade <= 10 or umidade >= 90) and fkCliente = ${idCliente};`;
 	}
 
@@ -201,6 +206,8 @@ router.get('/detalhamento_sensor/:idSensor', function (req, res, next) {
 	let instrucaoSql = "";
 	if (env == 'dev') {
 		instrucaoSql = `select temperatura, umidade, DATE_FORMAT(dataDado,'%H:%i:%s') as momento_grafico from dadoSensor inner join Sensor on fkSensor = idSensor where idSensor = ${idSensor} order by idDado desc limit ${limite_linhas};`;
+	} else if (env == 'production') {
+		instrucaoSql = `select temperatura, umidade, FORMAT(dataDado,'HH:mm:ss') as momento_grafico from dadoSensor inner join Sensor on fkSensor = idSensor where idSensor = ${idSensor} order by idDado offset 1 rows fetch next 3 rows only;`;
 	}
 
 

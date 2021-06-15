@@ -533,15 +533,3 @@ a {
     border-radius: 20px;
 }
 
-.bt_register {
-    border: none;
-    text-transform: uppercase;
-    margin-top: 5%;
-    padding: 6px 100px;
-    background-color: #006400;
-    color: white;
-    font-weight: bold;
-    border-radius: 20px;
-    margin-bottom: 20px;
-    box-shadow: 5px 7px 13px 0.5px black;
-}
