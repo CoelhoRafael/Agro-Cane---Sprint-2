@@ -84,7 +84,7 @@
                         <!--style="display: none;"-->
                     </div>
                     <div class="contact_us">
-                        <a href="AgroCane_Contact.html">
+                        <a href="contato_empresa.html">
                             Contato
                         </a>
                     </div>
@@ -112,7 +112,7 @@
 <script>
 
     function entrar() {
-        aguardar();
+        // aguardar();
         var formulario = new URLSearchParams(new FormData(form_login));
         fetch("/usuarios/autenticar", {
             method: "POST",
@@ -145,19 +145,19 @@
         return false;
     }
 
-    function aguardar() {
-        efetuarlogin.disabled = true;
-        img_aguarde.style.display = 'inline';
-        img_aguarde.style.visibility = 'visible';
-        div_erro.style.visibility = 'hidden';
-    }
+    // function aguardar() {
+    //     efetuarlogin.disabled = true;
+    //     img_aguarde.style.display = 'inline';
+    //     img_aguarde.style.visibility = 'visible';
+    //     div_erro.style.visibility = 'hidden';
+    // }
 
-    function finalizar_aguardar(resposta) {
-        efetuarlogin.disabled = false;
-        img_aguarde.style.visibility = 'hidden';
-        img_aguarde.style.display = 'none';
-        div_erro.style.visibility = 'visible';
-        div_erro.innerHTML = resposta;
-    }
+    // function finalizar_aguardar(resposta) {
+    //     efetuarlogin.disabled = false;
+    //     img_aguarde.style.visibility = 'hidden';
+    //     img_aguarde.style.display = 'none';
+    //     div_erro.style.visibility = 'visible';
+    //     div_erro.innerHTML = resposta;
+    // }
 
 </script>
