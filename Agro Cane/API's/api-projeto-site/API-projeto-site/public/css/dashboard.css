@@ -19,7 +19,6 @@ body {
     position: fixed;
 }
 
-
 h1 {
     margin: 0;
     padding: 0;
@@ -38,7 +37,7 @@ a {
     width: 50%;
     /* height: 100px; */
     margin-left: 1%;
-    margin: auto;  
+    margin: auto;
     border: 3px solid #006301;
     background-color: #05613E;
     border-radius: 5px;
@@ -52,12 +51,12 @@ a {
     border-radius: 10px;
 }
 
-.leo_titulo{
+.leo_titulo {
     color: #e7e6a0;
     margin-bottom: 6%;
 }
 
-#platinha{
+#platinha {
     margin: 0;
     margin-bottom: 41px;
     margin-top: -20px;
@@ -91,17 +90,17 @@ a {
     padding: 0;
 }
 
-#leo_agro{
+#leo_agro {
     color: #006301;
     font-size: 35px;
 }
 
-#leo_cane{
+#leo_cane {
     color: #e7e6a0;
     font-size: 35px;
 }
 
-.gui_barrinha{
+.gui_barrinha {
     margin: 0;
     margin-top: 2%;
     /* text-align: center; */
@@ -119,22 +118,21 @@ a {
     font-size: 21px;
 }
 
-.leo_creme{
+.leo_creme {
     color: #e7e6a0;
     font-size: 21px;
 }
 
-.leo_botaozinho{
+.leo_botaozinho {
     text-align: center;
 }
 
-.leo_meio{
+.leo_meio {
     height: 100vh;
     background-image: url(../img/img-fundo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
-
 
 /* #img_meio{
   background-repeat: no-repeat;
@@ -144,7 +142,7 @@ a {
     height: auto;
 } */
 
-.leo_caixameio{
+.leo_caixameio {
     height: 700px;
     width: 40%;
     margin-left: 15%;
@@ -224,7 +222,6 @@ a {
 .gui_seleciona {
     border: none;
     margin-top: 20px;
-
 }
 
 .sel_seleciona_t {
@@ -276,47 +273,8 @@ a {
     font-weight: 600;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* FOOTER */
+
 /* 
 .footer {
     background-color: rgb(255, 95, 37);
@@ -330,4 +288,3 @@ a {
     margin: 0;
     padding-top: 40px;
 } */
-

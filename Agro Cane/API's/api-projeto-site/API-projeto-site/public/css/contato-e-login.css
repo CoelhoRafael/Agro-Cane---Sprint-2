@@ -1,4 +1,3 @@
-
 /* PÁGINA DO LOGIN */
 
 .bt_login {
@@ -95,15 +94,15 @@ a {
 }
 
 .extra img {
-   width: 70px;
-   visibility: hidden;
-   background-color: #EDE9A2;
-   border-radius: 100%;
+    width: 70px;
+    visibility: hidden;
+    background-color: #EDE9A2;
+    border-radius: 100%;
 }
 
 .extra .msg_erro {
-    background-color: sandybrown; 
-    color: black; 
+    background-color: sandybrown;
+    color: black;
     visibility: hidden;
 }
 
@@ -191,5 +190,3 @@ a {
     border-radius: 100%;
     text-align: center;
 }
-
-

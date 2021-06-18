@@ -9,7 +9,7 @@ body {
 }
 
 .header {
-    background-color:#55A54E;
+    background-color: #55A54E;
     color: #EDE9A2;
     overflow: auto;
     border-bottom: 4px solid #EDE9A2;
@@ -29,11 +29,11 @@ body {
 }
 
 body .header .navbar li {
-    
     float: left;
     margin-left: 15px;
     text-transform: uppercase;
-    font-weight: bold; /*Peso da fonte*/
+    font-weight: bold;
+    /*Peso da fonte*/
     font-size: 15px;
 }
 
@@ -41,6 +41,7 @@ body .header .navbar li {
     color: #006400;
     text-align: center;
 }
+
 .bt_register1 {
     background-color: #EDE9A2;
     border: none;
@@ -443,36 +444,36 @@ a {
 
 /* Simulador */
 
-.bannerhome{
+.bannerhome {
     background-color: #b1b1b1;
     text-align: center;
     background-image: url(../img/simlator.jpeg);
     background-repeat: no-repeat;
     height: auto;
-    background-size:cover;   
-    overflow: auto;   
-    border-bottom: 5px solid #EDE9A2;  
+    background-size: cover;
+    overflow: auto;
+    border-bottom: 5px solid #EDE9A2;
 }
-   
-.bannerhome h1{
+
+.bannerhome h1 {
     margin: 0;
     font-size: 35px;
     padding-top: 50px;
     padding-bottom: 15px;
 }
-    
-.porque button{
+
+.porque button {
     border: 0;
     background-color: #55a44e;
-    color:#ede9a3 ;
+    color: #ede9a3;
     text-align: center;
     text-transform: uppercase;
     padding: 10px 30px;
     margin-top: 20px;
     font-weight: 600;
 }
-        
-.porque{
+
+.porque {
     text-align: center;
     margin-top: 5px;
     height: 600px;
@@ -532,4 +533,3 @@ a {
     padding: 5px 80px 5px 80px;
     border-radius: 20px;
 }
-
